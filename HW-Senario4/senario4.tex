@@ -1,0 +1,538 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\begin{document}
+	
+	\title{سناریو ۴: رابطه بین یک متغیر EEG پیوسته و یک نمره رفتاری پیوسته (همبستگی)}
+	\author{محمدمهدی شریف بیگی}
+	\maketitle
+	
+	\section{مثال: همبستگی در مطالعه پارکینسون}
+	
+	\subsection{زمینه پژوهش}
+	مطالعه بر روی پتانسیل‌های برانگیخته شنوایی P300 در بیماران پارکینسون و ارتباط آن با عملکرد شناختی، بررسی می‌کند که آیا بین دامنه P300 و نمرات ارزیابی شناختی مونترال (MoCA) رابطه‌ای وجود دارد یا خیر.
+	
+	\subsection{سوال پژوهشی}
+	آیا بین دامنه پتانسیل برانگیخته P300 و عملکرد حافظه کاری در بیماران پارکینسون رابطه‌ای وجود دارد؟
+	
+	\subsection{فرضیه‌ها}
+	
+	\textbf{فرضیه صفر ($H_0$):} هیچ رابطه خطی بین دامنه P300 و دقت حافظه کاری وجود ندارد ($\rho = 0$).\\
+	\textbf{فرضیه جایگزین ($H_1$):} رابطه خطی بین دامنه P300 و دقت حافظه کاری وجود دارد ($\rho \neq 0$).
+	
+	\subsection{ساختار داده‌ها}
+	
+	\textbf{متغیرها:} دو متغیر پیوسته که برای هر آزمودنی اندازه‌گیری شده است.
+	
+	\textbf{متغیر ۱:} دامنه P300 (میکروولت) در الکترود Pz
+	\begin{itemize}
+		\item نوع داده: پیوسته
+		\item واحد اندازه‌گیری: میکروولت (\lr{$\mu$V})
+		\item محدوده معمول: ۲ تا ۲۰ میکروولت
+		\item الکترود ثبت: Pz (ناحیه آهیانه‌ای)
+	\end{itemize}
+	
+	\textbf{متغیر ۲:} دقت حافظه کاری (درصد پاسخ‌های صحیح)
+	\begin{itemize}
+		\item نوع داده: پیوسته
+		\item واحد اندازه‌گیری: درصد
+		\item محدوده: ۰ تا ۱۰۰ درصد
+		\item ابزار ارزیابی: آزمون n-back
+	\end{itemize}
+	
+	\subsubsection{مفهوم پتانسیل برانگیخته P300}
+	
+	\textbf{P300 چیست؟}
+	\begin{itemize}
+		\item پتانسیل برانگیخته درون‌زا (\lr{Endogenous ERP})
+		\item ظاهر می‌شود حدود ۳۰۰ میلی‌ثانیه بعد از محرک
+		\item مرتبط با فرآیندهای شناختی: توجه، تصمیم‌گیری، حافظه کاری
+		\item در پارادایم oddball اندازه‌گیری می‌شود
+	\end{itemize}
+	
+	\textbf{مولفه‌های P300:}
+	\begin{itemize}
+		\item \textbf{دامنه (Amplitude):} شدت فعالیت عصبی (میکروولت)
+		\item \textbf{تأخیر (Latency):} سرعت پردازش اطلاعات (میلی‌ثانیه)
+		\item \textbf{توپولوژی (Topography):} توزیع فضایی روی پوست سر
+	\end{itemize}
+	
+	\textbf{اهمیت در پارکینسون:}
+	\begin{itemize}
+		\item شاخص عینی برای ارزیابی عملکرد شناختی
+		\item حساس به تغییرات زودهنگام شناختی
+		\item مستقل از علائم حرکتی بیماری
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=0.8]
+			% Time axis
+			\draw[thick, ->] (0,0) -- (8,0) node[right] {زمان (ms)};
+			\foreach \x/\label in {0/0, 2/100, 4/200, 6/300, 8/400}
+			\draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
+			
+			% Voltage axis  
+			\draw[thick, ->] (0,-2) -- (0,3) node[above] {ولتاژ (μV)};
+			\foreach \y/\label in {-2/-10, -1/-5, 0/0, 1/5, 2/10}
+			\draw (0.1,\y) -- (-0.1,\y) node[left] {\label};
+			
+			% ERP waveform
+			\draw[thick, blue] (0,0) .. controls (1,-0.5) and (1.5,-1) .. (2,-1.2)
+			.. controls (2.5,-1) and (3,-0.5) .. (4,0.5)
+			.. controls (5,1.5) and (5.5,2) .. (6,2.2)
+			.. controls (6.5,1.8) and (7,1) .. (8,0.2);
+			
+			% P300 peak annotation
+			\draw[red, dashed] (6,0) -- (6,2.2);
+			\node[red, above] at (6,2.5) {P300};
+			\node[red] at (6.5,1.5) {\rl{دامنه}: ۱۰ $\mu$V};
+			\node[red] at (6.5,1) {\rl{تأخیر}: ۳۰۰ ms};
+			
+			% N1, P2 annotations
+			\node[gray] at (2,-1.5) {N1};
+			\node[gray] at (4,0.8) {P2};
+			
+		\end{tikzpicture}
+		\caption{نمونه موج P300 در پاسخ به محرک هدف}
+	\end{figure}
+	
+	\subsection{آزمون آماری توصیه شده}
+	
+	\textbf{همبستگی پیرسون} (اگر داده‌ها نرمال باشند) یا \textbf{همبستگی اسپیرمن} (برای داده‌های غیرنرمال یا ترتیبی).
+	
+	\subsubsection{انتخاب نوع همبستگی}
+	
+	\begin{table}[h]
+		\centering
+		\caption{معیارهای انتخاب نوع همبستگی}
+		\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+			\hline
+			\textbf{ویژگی} & \textbf{همبستگی پیرسون} & \textbf{همبستگی اسپیرمن} \\
+			\hline
+			نوع داده & متغیرهای کمّی پیوسته & متغیرهای ترتیبی یا کمّی \\
+			\hline
+			توزیع داده & نرمال (یا نزدیک به نرمال) & هر نوع توزیعی \\
+			\hline
+			نوع رابطه & خطی & یکنواخت (خطی یا غیرخطی) \\
+			\hline
+			حساسیت به نقاط پرت & حساس & مقاوم \\
+			\hline
+			قدرت آماری & بیشتر (اگر فرضیات برقرار باشند) & کمتر اما مقاوم‌تر \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\textbf{در مطالعه پارکینسون:}
+	\begin{itemize}
+		\item داده‌های EEG اغلب کج توزیع هستند
+		\item حجم نمونه معمولاً کوچک است
+		\item احتمال وجود نقاط پرت بالاست
+		\item \textbf{توصیه:} همبستگی اسپیرمن
+	\end{itemize}
+	
+	\subsection{روش اجرای مطالعه}
+	
+	\subsubsection{شرکت‌کنندگان}
+	\begin{itemize}
+		\item ۳۲ بیمار مبتلا به پارکینسون ایدیوپاتیک
+		\item محدوده سنی: ۴۵-۷۵ سال
+		\item معیارهای ورود: تشخیص قطعی پارکینسون، نمره MoCA بالای ۱۸
+		\item معیارهای خروج: بیماری‌های عصبی همراه، مشکلات شنوایی شدید
+	\end{itemize}
+	
+	\subsubsection{ابزارها و روش‌ها}
+	
+	\textbf{ثبت EEG:}
+	\begin{itemize}
+		\item سیستم ۶۴ کاناله بر اساس استاندارد ۱۰-۲۰
+		\item نرخ نمونه‌برداری: ۵۱۲ هرتز
+		\item فیلتر: ۰.۱-۳۰ هرتز
+		\item الکترود مرجع: mastoids
+		\item الکترود زمین: پیشانی
+	\end{itemize}
+	
+	\textbf{پارادایم Oddball شنوایی:}
+	\begin{itemize}
+		\item محرک استاندارد: تون ۱۰۰۰ هرتز (احتمال ۸۰٪)
+		\item محرک هدف: تون ۲۰۰۰ هرتز (احتمال ۲۰٪)
+		\item مدت محرک: ۵۰ میلی‌ثانیه
+		\item فاصله بین محرک‌ها: ۱-۲ ثانیه (تصادفی)
+		\item تعداد کل محرک‌ها: ۲۰۰ (۴۰ هدف، ۱۶۰ استاندارد)
+	\end{itemize}
+	
+	\textbf{آزمون حافظه کاری (n-back):}
+	\begin{itemize}
+		\item محرک‌های بصری: حروف الفبا
+		\item مدت ارائه: ۵۰۰ میلی‌ثانیه
+		\item فاصله بین محرک‌ها: ۲۰۰۰ میلی‌ثانیه
+		\item سطوح: ۱-back، ۲-back، ۳-back
+		\item تعداد کوشش در هر سطح: ۲۰
+	\end{itemize}
+	
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[scale=1.2]
+		% Main timeline
+		\draw[thick, ->] (0,0) -- (14,0) node[right] {زمان};
+		
+		% Oddball paradigm title
+		\node[anchor=west, font=\large] at (0,4) {محرک‌های Oddball};
+		
+		% Oddball stimuli - drawing each one individually
+		\draw[blue, very thick] (1.5,3) -- (1.5,2.5);
+		\node[blue, font=\small] at (1.5,2.1) {S};
+		\draw[blue, very thick] (2.5,3) -- (2.5,2.5);
+		\node[blue, font=\small] at (2.5,2.1) {S};
+		\draw[red, very thick] (3.5,3) -- (3.5,2.5);
+		\node[red, font=\small] at (3.5,2.1) {T};
+		\draw[blue, very thick] (4.5,3) -- (4.5,2.5);
+		\node[blue, font=\small] at (4.5,2.1) {S};
+		\draw[blue, very thick] (5.5,3) -- (5.5,2.5);
+		\node[blue, font=\small] at (5.5,2.1) {S};
+		\draw[red, very thick] (6.5,3) -- (6.5,2.5);
+		\node[red, font=\small] at (6.5,2.1) {T};
+		\draw[blue, very thick] (7.5,3) -- (7.5,2.5);
+		\node[blue, font=\small] at (7.5,2.1) {S};
+		\draw[blue, very thick] (8.5,3) -- (8.5,2.5);
+		\node[blue, font=\small] at (8.5,2.1) {S};
+		\draw[blue, very thick] (9.5,3) -- (9.5,2.5);
+		\node[blue, font=\small] at (9.5,2.1) {S};
+		\draw[red, very thick] (10.5,3) -- (10.5,2.5);
+		\node[red, font=\small] at (10.5,2.1) {T};
+		
+		% Oddball legend with proper spacing
+		\node[blue, anchor=west, font=\footnotesize] at (0,1.5) {\lr{S}: استاندارد 1000 Hz};
+		\node[red, anchor=west, font=\footnotesize] at (7,1.5) {\lr{T}: \rl{هدف} ۲۰۰۰ Hz};
+		
+		% Separator line
+		\draw[gray, dashed] (0,0.8) -- (12,0.8);
+		
+		% N-back task title
+		\node[anchor=west, font=\large] at (0,0.3) {آزمون n-back};
+		
+		% N-back letters with more spacing
+		\foreach \x/\letter in {1.5/A, 2.5/B, 3.5/A, 4.5/C, 5.5/B, 6.5/B, 7.5/D, 8.5/A, 9.5/D, 10.5/D}
+		{
+			\draw[green!60!black, thick] (\x,-0.5) rectangle (\x+0.6,-1);
+			\node[green!60!black, font=\small] at (\x+0.3,-0.75) {\letter};
+		}
+		
+		% N-back explanation
+		\node[green!60!black, anchor=west, font=\tiny] at (0,-1.8) {مثال\rl{:} تشخیص ۲-\lr{back}};
+		\node[green!60!black, anchor=west, font=\tiny] at (0,-2.1) {\rl{حرف A در موقعیت ۳} = \rl{موقعیت ۱}};
+		
+	\end{tikzpicture}
+	\caption{نمایش شماتیک پروتکل آزمایش}
+\end{figure}
+	
+	\subsection{تجزیه و تحلیل داده‌ها}
+	
+	\subsubsection{پردازش داده‌های EEG}
+	
+	\textbf{پیش‌پردازش:}
+	\begin{itemize}
+		\item حذف artifacts (چشم، ماهیچه، حرکت)
+		\item فیلتر کردن: \lr{bandpass 0.1-30 Hz}
+		\item بازنمونه‌برداری به ۲۵۶ هرتز
+		\item \lr{ICA} برای حذف \lr{artifacts} باقی‌مانده
+	\end{itemize}
+	
+	\textbf{استخراج P300:}
+	\begin{itemize}
+		\item میانگین‌گیری epochs مربوط به محرک‌های هدف
+		\item پنجره زمانی: \lr{-200} تا \lr{+800} میلی‌ثانیه
+		\item \lr{ baseline correction}: \lr{-200} تا ۰ میلی‌ثانیه
+		\item اندازه‌گیری دامنه: حداکثر مثبت در پنجره \lr{250}-\lr{500} میلی‌ثانیه
+		\item الکترود تحلیل: Pz، Cz، Fz
+	\end{itemize}
+	
+	\subsubsection{محاسبه نمره حافظه کاری}
+	
+	\textbf{شاخص‌های عملکرد:}
+	\begin{itemize}
+		\item دقت: درصد پاسخ‌های صحیح
+		\item زمان واکنش: میانگین زمان پاسخ به محرک‌های هدف
+		\item شاخص حساسیت (\lr{d-prime}): $d' = Z(\text{Hit Rate}) - Z(\text{False Alarm Rate})$
+		\item شاخص تمایل پاسخ ($\beta$): معیار محافظه‌کاری در پاسخ‌دهی
+	\end{itemize}
+	
+	\textbf{نمره ترکیبی حافظه کاری:}
+	$$\text{WM Score} = \frac{(d'_{1back} + d'_{2back} + d'_{3back})}{3}$$
+	
+	\subsection{روش‌های آماری}
+	
+	\subsubsection{آمار توصیفی}
+	\begin{itemize}
+		\item میانگین و انحراف معیار برای هر متغیر
+		\item بررسی نرمال بودن با آزمون Shapiro-Wilk
+		\item شناسایی نقاط پرت با روش Z-score (|Z| > 3.29)
+		\item نمودارهای پراکندگی برای بررسی بصری رابطه
+	\end{itemize}
+	
+	\subsubsection{تحلیل همبستگی}
+	
+	\textbf{آزمون اصلی:}
+	$$H_0: \rho = 0 \quad \text{در مقابل} \quad H_1: \rho \neq 0$$
+	
+	\textbf{ضریب همبستگی اسپیرمن:}
+	$$r_s = 1 - \frac{6\sum d_i^2}{n(n^2-1)}$$
+	
+	\textbf{آزمون معناداری:}
+	$$t = r_s \sqrt{\frac{n-2}{1-r_s^2}}$$
+	
+	درجه آزادی: $df = n-2$
+	
+	\subsubsection{تفسیر اندازه اثر (\lr{Effect Size})}
+	
+	\begin{table}[h]
+		\centering
+		\caption{راهنمای تفسیر ضریب همبستگی}
+		\begin{tabular}{|p{3cm}|p{3cm}|p{6cm}|}
+			\hline
+			\textbf{مقدار |r|} & \textbf{اندازه اثر} & \textbf{تفسیر} \\
+			\hline
+			0.10 - 0.29 & کوچک & رابطه ضعیف \\
+			\hline
+			0.30 - 0.49 & متوسط & رابطه متوسط \\
+			\hline
+			0.50 - 0.69 & بزرگ & رابطه قوی \\
+			\hline
+			0.70 - 0.89 & خیلی بزرگ & رابطه خیلی قوی \\
+			\hline
+			0.90+ & تقریباً کامل & رابطه تقریباً کامل \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\section{نتایج مطالعه}
+	
+	\subsection{آمار توصیفی}
+	
+	\begin{table}[h]
+		\centering
+		\caption{آمار توصیفی متغیرهای اصلی}
+		\begin{tabular}{lcccc}
+			\toprule
+			\textbf{متغیر} & \textbf{میانگین} & \textbf{انحراف معیار} & \textbf{دامنه} & \textbf{میانه} \\
+			\midrule
+			دامنه P300 (μV) & 8.4 & 3.2 & 3.1 - 16.8 & 7.9 \\
+			نمره حافظه کاری (%) & 76.3 & 12.8 & 45 - 95 & 78.5 \\
+			MoCA کل & 24.1 & 3.4 & 18 - 30 & 25 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\subsection{تحلیل همبستگی}
+	
+	\textbf{فرضیه‌ها:}
+	\begin{itemize}
+		\item $H_0$: هیچ رابطه خطی بین دامنه P300 و عملکرد حافظه کاری وجود ندارد ($\rho = 0$)
+		\item $H_1$: رابطه خطی بین دامنه P300 و عملکرد حافظه کاری وجود دارد ($\rho \neq 0$)
+	\end{itemize}
+	
+	\textbf{آزمون آماری:} ضریب همبستگی اسپیرمن
+	
+	\textbf{نتایج:}
+	\begin{itemize}
+		\item ضریب همبستگی: $r_s = +0.65$
+		\item $p$-value < 0.001
+		\item $R^2 = 0.42$
+		\item فاصله اطمینان ۹۵٪: [0.38, 0.82]
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=0.8]
+			% Axes
+			\draw[thick, ->] (0,0) -- (10,0) node[right] {دامنه P300 (μV)};
+			\draw[thick, ->] (0,0) -- (0,8) node[above] {نمره حافظه کاری (\%)};
+			
+			% Scale
+			\foreach \x/\label in {0/0, 2/5, 4/10, 6/15, 8/20}
+			\draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
+			
+			\foreach \y/\label in {0/40, 2/60, 4/80, 6/100}
+			\draw (0.1,\y) -- (-0.1,\y) node[left] {\label};
+			
+			% Data points (simulated)
+			\foreach \x/\y in {1.5/1.2, 2.1/1.8, 2.8/2.1, 3.2/2.5, 3.8/2.9, 4.1/3.2, 4.6/3.6, 5.2/4.1, 5.8/4.5, 6.1/4.8, 6.7/5.2, 7.3/5.6, 7.9/6.1}
+			{
+				\fill[blue] (\x,\y) circle (0.08);
+			}
+			
+			% Regression line
+			\draw[red, thick] (1,1) -- (8,6.5);
+			
+			% Correlation info
+			\node[red] at (7,2) {$r_s = +0.65$};
+			\node[red] at (7,1.5) {$p < 0.001$};
+			\node[red] at (7,1) {$R^2 = 0.42$};
+			
+		\end{tikzpicture}
+		\caption{نمودار پراکندگی: رابطه بین دامنه P300 و عملکرد حافظه کاری}
+	\end{figure}
+	
+	\subsection{تفسیر نتایج}
+	
+	\textbf{یافته اصلی:}
+	فرضیه صفر رد شد. همبستگی مثبت قوی و معناداری بین دامنه P300 و عملکرد حافظه کاری وجود دارد.
+	
+	\textbf{تفسیر علمی:}
+	\begin{itemize}
+		\item بیمارانی که دامنه P300 بیشتری داشتند، عملکرد بهتری در آزمون‌های حافظه کاری نشان دادند
+		\item دامنه P300 ۴۲٪ از تغییرات عملکرد حافظه کاری را تبیین می‌کند
+		\item این یافته نشان می‌دهد P300 شاخص عینی مناسبی برای ارزیابی توانایی‌های شناختی در پارکینسون است
+	\end{itemize}
+	
+	\textbf{اهمیت بالینی:}
+	\begin{itemize}
+		\item P300 می‌تواند به عنوان biomarker برای تشخیص زودهنگام اختلالات شناختی استفاده شود
+		\item این روش مستقل از علائم حرکتی است و تحت تأثیر داروهای ضدپارکینسون قرار نمی‌گیرد
+		\item امکان پیگیری روند تغییرات شناختی در طول زمان را فراهم می‌کند
+	\end{itemize}
+	
+	\section{تحلیل‌های تکمیلی}
+	
+	\subsection{همبستگی جزئی (\lr{Partial Correlation})}
+	
+	برای کنترل متغیرهای مخدوشگر احتمالی:
+	
+	\textbf{متغیرهای کنترل:}
+	\begin{itemize}
+		\item سن
+		\item تحصیلات
+		\item مدت بیماری
+		\item شدت علائم حرکتی (UPDRS-III)
+	\end{itemize}
+	
+	\textbf{نتیجه:}
+	$$r_{partial} = +0.58, \quad p < 0.01$$
+	
+	رابطه همچنان معنادار و قوی باقی ماند.
+	
+	\subsection{تحلیل رگرسیون}
+	
+	برای پیش‌بینی عملکرد حافظه کاری:
+	
+	\textbf{مدل رگرسیون:}
+	$$\text{WM Score} = \beta_0 + \beta_1 \times \text{P300 Amplitude} + \varepsilon$$
+	
+	\textbf{نتایج:}
+	\begin{itemize}
+		\item $\beta_0 = 45.2$ (عرض از مبدا)
+		\item $\beta_1 = 3.7$ (شیب)
+		\item $R^2 = 0.42$
+		\item $F(1,30) = 21.8, p < 0.001$
+	\end{itemize}
+	
+	\textbf{تفسیر:} به ازای هر میکروولت افزایش در دامنه P300، نمره حافظه کاری ۳.۷ درصد افزایش می‌یابد.
+	
+	\section{محدودیت‌ها و ملاحظات}
+	
+	\subsection{محدودیت‌های روش‌شناختی}
+	
+	\begin{itemize}
+		\item \textbf{علیت:} همبستگی علیت را اثبات نمی‌کند
+		\item \textbf{حجم نمونه:} نمونه نسبتاً کوچک (n=32)
+		\item \textbf{طرح مقطعی:} امکان بررسی تغییرات طولی وجود ندارد
+		\item \textbf{متغیرهای مخدوشگر:} ممکن است متغیرهای پنهان تأثیرگذار باشند
+	\end{itemize}
+	
+	\subsection{ملاحظات آماری}
+	
+	\begin{itemize}
+		\item \textbf{فرض خطی بودن:} رابطه ممکن است غیرخطی باشد
+		\item \textbf{نقاط پرت:} حساسیت به نقاط پرت احتمالی
+		\item \textbf{توزیع داده‌ها:} ضرورت بررسی نرمال بودن
+		\item \textbf{اندازه اثر:} تأکید بر اهمیت عملی علاوه بر معناداری آماری
+	\end{itemize}
+	
+	\subsection{پیشنهادات برای مطالعات آینده}
+	
+	\begin{itemize}
+		\item \textbf{مطالعه طولی:} پیگیری بیماران در طول زمان
+		\item \textbf{حجم نمونه بیشتر:} افزایش قدرت آماری
+		\item \textbf{گروه کنترل:} مقایسه با افراد سالم همسن
+		\item \textbf{متغیرهای اضافی:} بررسی سایر پارامترهای EEG
+		\item \textbf{تکرارپذیری:} اعتبارسنجی در نمونه‌های مستقل
+	\end{itemize}
+	
+	\section{نتیجه‌گیری}
+	
+	این مطالعه نمونه عالی از \textbf{تحلیل همبستگی} در تحقیقات عصب‌روانشناسی است که در آن:
+	
+	\begin{itemize}
+		\item دو متغیر پیوسته (دامنه P300 و عملکرد حافظه کاری) بررسی شدند
+		\item از همبستگی اسپیرمن برای تحلیل رابطه استفاده شد
+		\item رابطه مثبت قوی و معناداری یافت شد
+		\item یافته‌ها اهمیت بالینی قابل توجهی دارند
+	\end{itemize}
+	
+	\textbf{کاربردهای بالینی:}
+	\begin{itemize}
+		\item P300 به عنوان biomarker غیرتهاجمی برای ارزیابی شناختی
+		\item تشخیص زودهنگام اختلالات شناختی در پارکینسون
+		\item پیگیری اثربخشی مداخلات درمانی شناختی
+		\item ارزیابی عینی مستقل از علائم حرکتی
+	\end{itemize}
+	
+	\textbf{اهمیت روش‌شناختی:}
+	\begin{itemize}
+		\item نمونه کاربرد صحیح تحلیل همبستگی
+		\item تأکید بر اهمیت کنترل متغیرهای مخدوشگر
+		\item نشان‌دهنده ضرورت تفسیر محتاطانه یافته‌های همبستگی
+		\item پایه‌ای برای طراحی مطالعات علّی آینده
+	\end{itemize}
+	
+	\section{فرمول‌های آماری}
+	
+	\subsection{ضریب همبستگی اسپیرمن}
+	
+	$r_s = 1 - \frac{6\sum_{i=1}^{n} d_i^2}{n(n^2-1)}$
+	
+	که در آن:
+	\begin{itemize}
+		\item $d_i$: تفاوت رتبه‌ها برای مشاهده $i$ام
+		\item $n$: تعداد مشاهدات
+	\end{itemize}
+	
+	\subsection{آزمون معناداری}
+	
+	$t = r_s \sqrt{\frac{n-2}{1-r_s^2}}$
+	
+	با درجه آزادی: $df = n-2$
+	
+	\subsection{فاصله اطمینان}
+	
+	برای محاسبه فاصله اطمینان ۹۵٪ برای ضریب همبستگی:
+	
+	$\text{CI} = \tanh\left(\tanh^{-1}(r) \pm \frac{1.96}{\sqrt{n-3}}\right)$
+	
+	\subsection{ضریب تعیین}
+	
+	$R^2 = r_s^2$
+	
+	که درصد واریانس مشترک بین دو متغیر را نشان می‌دهد.
+	
+	\section{مراجع}
+	
+	\begin{latin}
+		\begin{enumerate}
+			\item Kumar, A., Singh, V., Gupta, S., et al. (2023). Auditory evoked P300 potential in patients with Parkinson's disease. \textit{Cureus}, 15(9), e45127. \\
+			Available at: \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10599456/}
+		\end{enumerate}
+	\end{latin}
+	
+\end{document}

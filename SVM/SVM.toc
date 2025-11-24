@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}ماشین بردار پشتیبان (SVM) چیست؟}{3}{section.1}%
+\contentsline {section}{\numberline {2}جداکننده خطی و مفهوم حاشیه بیشینه}{3}{section.2}%
+\contentsline {section}{\numberline {3}مقابله با داده‌های جداناپذیر: حاشیه نرم}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}تابع هزینه Hinge Loss}{5}{subsection.3.1}%
+\contentsline {section}{\numberline {4}ریاضیات بهینه‌سازی: لاگرانژ، دوگانگی و KKT}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}شرایط کاروش-کوهن-تاکر (KKT)}{6}{subsection.4.1}%
+\contentsline {section}{\numberline {5}ترفند کرنل: حرکت به ابعاد بالاتر}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}انواع کرنل‌های متداول}{8}{subsection.5.1}%
+\contentsline {section}{\numberline {6}پرسش و پاسخ‌های عملی}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}چرا SVM به مقیاس‌بندی ویژگی‌ها حساس است؟}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}SVM چگونه مسائل چندکلاسه را حل می‌کند؟}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}تأثیر پارامترهای C و Gamma چگونه است؟}{8}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}مقایسه فلسفه کرنل RBF و کرنل کسینوسی}{9}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}SVM در برابر نویز و داده‌های پرت چگونه عمل می‌کند؟}{9}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}نفرین ابعاد و بُعد VC چه هستند؟}{9}{subsection.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.1}نفرین ابعاد (\lr {Curse of Dimensionality})}{9}{subsubsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.2}بُعد VC (\lr {Vapnik-Chervonenkis Dimension})}{10}{subsubsection.6.6.2}%
+\contentsline {section}{\numberline {7}کاربرد ویژه: تشخیص داده پرت در الکتروفیزیولوژی}{10}{section.7}%
+\contentsline {subsection}{\numberline {7.1}الگوریتم \lr {One-Class SVM}}{10}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}تفاوت ریاضی با SVM استاندارد}{11}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.2}مثال‌های عملی با Scikit-learn}{12}{subsubsection.7.1.2}%
+\contentsline {paragraph}{مثال ۱: تشخیص داده‌های پرت ساختگی.}{12}{paragraph*.1}%
+\contentsline {paragraph}{مثال ۲: مقایسه عملکرد روی توزیع‌های مختلف داده.}{12}{paragraph*.2}%
+\contentsline {subsubsection}{\numberline {7.1.3}مراحل عملی شناسایی آرتیفکت EEG با \lr {One-Class SVM}}{14}{subsubsection.7.1.3}%
+\contentsline {section}{\numberline {8}جمع‌بندی: مزایا و معایب SVM}{15}{section.8}%
+\contentsline {subsection}{\numberline {8.1}مزایا}{15}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}معایب}{15}{subsection.8.2}%

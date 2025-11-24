@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+% Load packages BEFORE xepersian
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+% Listings package with custom setup
+\usepackage{listings}
+% XePersian setup for RTL/LTR support - MUST BE LOADED LAST
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+
+% Page setup
+\geometry{
+	top=2.5cm,
+	bottom=2.5cm,
+	left=2.5cm,
+	right=2.5cm
+}
+\setlength{\headheight}{16pt}
+
+% Colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{sectioncolor}{rgb}{0.1,0.4,0.7}
+\definecolor{examplecolor}{rgb}{0.9, 0.95, 1.0}
+\definecolor{anovacolor}{rgb}{0.95, 0.9, 1.0}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\lr{Outliers in Laplace Distribution}}
+\fancyhead[L]{Outliers در توزیع لاپلاس}
+\fancyfoot[C]{\thepage}
+
+% Section styling
+\titleformat{\section}
+{\color{sectioncolor}\Large\bfseries}
+{\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{sectioncolor}\large\bfseries}
+{\thesubsection}{1em}{}
+
+% Hyperlink setup
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdfpagemode=FullScreen,
+	unicode=true,
+	pdfencoding=auto
+}
+
+\title{
+	\begin{center}
+		{\Huge \bfseries موقعیت Outliers در توزیع لاپلاس} \\
+		\vspace{1cm}
+		{\large بررسی مقایسه‌ای با توزیع نرمال}
+	\end{center}
+}
+\author{تحلیل آماری}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{مقدمه}
+	
+	سوال اصلی این است که \textbf{outlierها در توزیع لاپلاسی در کجا قرار دارند و چرا؟}
+	
+	\begin{tcolorbox}[colback=examplecolor, colframe=sectioncolor, title=پاسخ کلی]
+		در توزیع لاپلاسی، outlierها کمتر مشهود هستند و در واقع این توزیع outlierهای کمتری نسبت به توزیع نرمال تولید می‌کند.
+	\end{tcolorbox}
+	
+	\section{موقعیت Outliers در توزیع لاپلاسی}
+	
+	\subsection{مقایسه با توزیع نرمال}
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.9\textwidth]{laplace_outliers_comparison.png}
+		\caption{مقایسه موقعیت \lr{outliers} در توزیع نرمال و لاپلاس. نقاط آبی (\lr{outliers} نرمال) نزدیک‌تر به مرکز و نقاط قرمز (\lr{outliers} لاپلاس) دورتر از مرکز قرار دارند. این نمودار نشان می‌دهد که توزیع لاپلاس (خط آبی چین‌دار) دارای دم‌های سنگین‌تر نسبت به توزیع نرمال (خط زرد) است.}
+		\label{fig:outliers_comparison}
+	\end{figure}
+	
+	\begin{itemize}
+		\item \textbf{نقاط آبی (\lr{Outliers Normal})}: در مناطق نزدیک‌تری به مرکز قرار دارند (حدود $x \approx \pm 4$)
+		\item \textbf{نقاط قرمز (\lr{Outliers Laplace})}: در مناطق دورتری از مرکز قرار دارند (حدود $x \approx \pm 7$ یا $\pm 8$)
+	\end{itemize}
+	
+	\begin{tcolorbox}[colback=examplecolor, colframe=sectioncolor, title=مشاهدات کلیدی از نمودار]
+		\begin{itemize}
+			\item \textbf{توزیع نرمال (خط زرد)}: دم‌های نازک‌تر دارد، بنابراین مقادیری که در $x \approx \pm 4$ قرار دارند به سرعت به outlier تبدیل می‌شوند
+			\item \textbf{توزیع لاپلاس (خط آبی چین‌دار)}: دم‌های پهن‌تر دارد، بنابراین برای اینکه یک نقطه outlier محسوب شود باید خیلی دورتر از مرکز باشد
+		\end{itemize}
+	\end{tcolorbox}
+	
+	\newpage
+	
+	\section{دلایل این تفاوت}
+	
+	\subsection{ Heavy Tails (دم‌های سنگین)}
+	
+	\begin{tcolorbox}[colback=anovacolor, colframe=sectioncolor]
+		توزیع لاپلاسی دارای دم‌های سنگین‌تری نسبت به توزیع نرمال است. این یعنی:
+		\begin{itemize}
+			\item مقادیر دورتر از مرکز احتمال بیشتری دارند که رخ دهند
+			\item آنچه در توزیع نرمال outlier محسوب می‌شود، در لاپلاسی ممکن است طبیعی باشد
+		\end{itemize}
+	\end{tcolorbox}
+	
+	\subsection{شکل توزیع}
+	
+	توزیع لاپلاسی دارای ویژگی‌های زیر است:
+	
+	\begin{itemize}
+		\item \textbf{قله تیزتر (Sharper Peak)}: نسبت به توزیع نرمال
+		\item \textbf{دم‌های آهسته‌تر}: به آرامی کاهش می‌یابند
+		\item \textbf{ساختار مقاوم}: مقادیر افراطی بیشتر در محدوده قابل قبول قرار می‌گیرند
+	\end{itemize}
+	
+	\subsection{تحلیل ریاضی}
+	
+	تابع چگالی احتمال توزیع‌ها:
+	
+	\textbf{توزیع نرمال:}
+	$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+	
+	\textbf{توزیع لاپلاس:}
+	$$f(x) = \frac{1}{2b} e^{-\frac{|x-\mu|}{b}}$$
+	
+	تفاوت کلیدی در نحوه کاهش تابع در دم‌هاست:
+	\begin{itemize}
+		\item نرمال: کاهش نمایی با توان دوم ($e^{-x^2}$)
+		\item لاپلاس: کاهش نمایی خطی ($e^{-|x|}$)
+	\end{itemize}
+	
+	\section{کاربردهای عملی}
+	
+	\subsection{کاربردهای توزیع لاپلاسی}
+	
+	توزیع لاپلاسی به دلیل مقاومت در برابر outlierها در موارد زیر استفاده می‌شود:
+	
+	\begin{enumerate}
+		\item \textbf{Robust Statistics}: وقتی می‌خواهیم نسبت به outlierها مقاوم باشیم
+		\item \textbf{Lasso Regression}: در یادگیری ماشین برای تنظیم‌سازی
+		\item \textbf{پردازش سیگنال}: جایی که نویز دارای outlier است
+		\item \textbf{تحلیل تصاویر}: برای حذف نویزهای نقطه‌ای
+		\item \textbf{آمار بیزی}: به عنوان prior مناسب
+		\item \textbf{مدل‌سازی مالی}: برای بازارهای ناپایدار
+	\end{enumerate}
+	
+	\section{نتیجه‌گیری}
+	
+	\begin{tcolorbox}[colback=examplecolor, colframe=sectioncolor, title=خلاصه پاسخ]
+		\textbf{موقعیت outlierها در توزیع لاپلاسی:}
+		\begin{itemize}
+			\item در مناطق دورتری از مرکز نسبت به توزیع نرمال قرار می‌گیرند
+			\item به دلیل heavy tails، کمتر به عنوان outlier شناخته می‌شوند
+			\item این ویژگی باعث می‌شود لاپلاس برای داده‌های دارای نویز یا outlier طبیعی مناسب‌تر باشد
+		\end{itemize}
+	\end{tcolorbox}
+	
+	این تحلیل نشان می‌دهد که انتخاب توزیع مناسب بر اساس ماهیت داده‌ها و نحوه برخورد مطلوب با outlier ها بسیار مهم است.
+	
+\end{document}

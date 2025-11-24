@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+
+\begin{document}
+	
+	\title{سناریو ۱: دو گروه، یک نقطه زمانی/شرایط}
+	\author{محمدمهدی شریف بیگی}
+	\maketitle
+	
+	\section{سوال پژوهشی}
+	
+آیا جوانان مبتلا به اختلال کمبود توجه/بیش‌فعالی (ADHD) در مقایسه با افراد غیرمبتلا، تفاوت‌هایی در قدرت مطلق EEG و عدم تقارن فرونتال در حالت استراحت دارند؟
+
+	
+	\section{تعریف قدرت مطلق EEG}
+	
+		\textbf{قدرت مطلق EEG (\lr{Absolute Power})} عبارت است از میزان انرژی یا شدت فعالیت الکتریکی مغز در یک باند فرکانسی خاص که به میکروولت مربع (\lr{$\mu$V²}) اندازه‌گیری می‌شود.
+	
+	\subsection{مفاهیم کلیدی}
+	
+	\begin{itemize}
+		\item \textbf{باندهای فرکانسی \lr{EEG}:}
+		\begin{itemize}
+			\item دلتا (\lr{Delta}): ۱-۴ هرتز - مرتبط با خواب عمیق و حالات آگاهی پایین
+			\item تتا (\lr{Theta}): ۴-۸ هرتز - مرتبط با خواب سبک، خلاقیت و حالات مدیتیو
+			\item آلفا (\lr{Alpha}): ۸-۱۲ هرتز - مرتبط با حالت آرامش و چشمان بسته
+			\item بتا (\lr{Beta}): ۱۲-۲۵ هرتز - مرتبط با توجه فعال و تمرکز
+			\item بتای بالا (\lr{High Beta}): ۲۵-۳۰ هرتز - مرتبط با استرس و اضطراب
+			\item گاما (\lr{Gamma}): ۳۰-۴۰ هرتز - مرتبط با آگاهی بالا و پردازش شناختی
+		\end{itemize}
+		
+		\item \textbf{نحوه محاسبه:} از طریق تبدیل فوریه سریع (\lr{FFT}) سیگنال \lr{EEG}، قدرت هر باند فرکانسی محاسبه می‌شود.
+		
+		\item \textbf{اهمیت در \lr{ADHD}:} 
+		\begin{itemize}
+			\item افزایش قدرت دلتا و تتا: نشان‌دهنده کم‌فعالی مغزی و کاهش سطح هوشیاری
+			\item کاهش قدرت بتا: نشان‌دهنده کاهش توجه و تمرکز
+			\item این تغییرات در نواحی فرونتال با نقص‌های اجرایی ADHD مرتبط است
+		\end{itemize}
+	\end{itemize}
+	
+	\section{ساختار داده‌ها}
+	
+	\begin{itemize}
+		\item \textbf{فاکتور بین‌آزمودنی:} گروه (بیماران ADHD در مقابل بیماران غیر-ADHD). هر شرکت‌کننده تنها در یک گروه قرار می‌گیرد.
+		\item \textbf{متغیر وابسته (\lr{DV}):} قدرت مطلق هر فرکانس اندازه‌گیری شده در سه ناحیه فرونتال (چپ، میانی، راست) از ناحیه پوست سر و شاخص عدم تقارن فرونتال.
+		\item \textbf{آزمون آماری پیشنهادی:} تحلیل واریانس یک‌طرفه (\lr{One-way ANOVA})
+
+	\end{itemize}
+	
+	\section{مثال: مقایسه دو گروه مستقل}
+	
+	\subsection{فرضیه‌ها}
+	
+	$H_0$: قدرت مطلق EEG و عدم تقارن فرونتال بین گروه‌های ADHD و غیر-ADHD برابر است.\\$H_1$: قدرت مطلق EEG و عدم تقارن فرونتال بین گروه‌ها متفاوت است.
+	
+	\subsection{آزمون آماری}
+	\begin{itemize}
+		\item آزمون t نمونه‌های مستقل
+		\item تحلیل واریانس اندازه‌گیری‌های مکرر (RM-ANOVA)
+		\item تحلیل کوواریانس چندمتغیره (MANCOVA)
+	\end{itemize}
+	
+	\section{نتایج}
+	
+	\subsection{مشخصات جمعیت‌شناختی و بالینی }
+	
+	\begin{table}[h!]
+		\centering
+		\caption{ویژگی‌های جمعیت‌شناختی و بالینی شرکت‌کنندگان}
+		\begin{latin}
+				\begin{tabular}{lccc}
+				\toprule
+				Variable & ADHD (n = 51) & Non-ADHD (n = 52) & p \\
+				\midrule
+				Demographic characteristics & & & \\
+				\quad Age (years) & $21.16 \pm 2.56$ & $20.94 \pm 2.22$ & 0.650 \\
+				\quad Sex (male, n \%) & 48 (94.1\%) & 44 (84.6\%) & 0.118 \\
+				Clinical characteristics & & &\\
+				\quad HAM-D & $13.90 \pm 4.31$ & $15.44 \pm 5.02$ & 0.098 \\
+				\quad STAI & $59.71 \pm 9.10$ & $59.19 \pm 11.85$ & 0.805 \\
+				\quad ASRS & $39.51 \pm 6.42$ & $18.34 \pm 5.23$ & $<0.001$ \\
+				Comorbidity & & & \\
+				\quad Depression (n, \%) & 6 (11.8\%) & 8 (15.4\%) & 0.610 \\
+				\quad Anxiety (n, \%) & 10 (19.6\%) & 9 (17.3\%) & 0.779 \\
+				\quad Total (n, \%) & 13 (25.5\%) & 14 (26.9\%) & 0.872 \\
+				\bottomrule
+			\end{tabular}
+		\end{latin}
+	\end{table}
+	
+	\subsection{قدرت مطلق EEG}
+	
+	\begin{table}[h!]
+		\centering
+		\caption{مقایسه قدرت مطلق QEEG بین گروه‌های ADHD و غیر-ADHD}
+		\begin{latin}
+				\begin{tabular}{lcccc}
+				\toprule
+				Frequency Band & Region & ADHD (M$\pm$SD) & Non-ADHD (M$\pm$SD) & p \\
+				\midrule
+				Delta & Mid-frontal & $6.88 \pm 3.95$ & $4.39 \pm 4.54$ & 0.035 \\
+				Beta & Mid-frontal & $3.33 \pm 2.75$ & $5.62 \pm 4.82$ & 0.021 \\
+				High Beta & Left-frontal & $15.38 \pm 10.86$ & $9.14 \pm 6.66$ & 0.021 \\
+				& Mid-frontal  & $18.30 \pm 14.82$ & $10.58 \pm 7.35$ & 0.017 \\
+				& Right-frontal& $15.75 \pm 11.10$ & $10.05 \pm 7.81$ & 0.046 \\
+				\bottomrule
+			\end{tabular}
+		\end{latin}
+	\end{table}
+	
+	\subsection{شاخص عدم تقارن فرونتال (FAI)}
+	
+	\begin{table}[h!]
+		\centering
+		\caption{مقایسه شاخص عدم تقارن فرونتال (FAI) بین گروه‌های ADHD و غیر-ADHD}
+		\begin{latin}
+				\begin{tabular}{lcccc}
+				\toprule
+				Frequency Band & Electrode Pair & ADHD (M$\pm$SD) & Non-ADHD (M$\pm$SD) & p \\
+				\midrule
+				Delta & F4-F3 & $-7.79 \pm 33.81$ & $-41.45 \pm 34.32$ & $<0.001$ \\
+				& F8-F7 & $-6.40 \pm 22.89$ & $-24.62 \pm 23.20$ & 0.003 \\
+				Theta & F4-F3 & $-7.39 \pm 25.58$ & $-32.14 \pm 29.78$ & 0.001 \\
+				Alpha & F4-F3 & $-9.07 \pm 19.59$ & $-24.66 \pm 23.89$ & 0.014 \\
+				& F8-F7 & $2.16 \pm 16.42$ & $10.95 \pm 20.96$ & 0.023 \\
+				Beta  & Fp2-Fp1 & $0.15 \pm 8.43$ & $2.87 \pm 8.46$ & 0.016 \\
+				& F4-F3  & $-4.21 \pm 21.13$ & $-22.60 \pm 25.13$ & 0.004 \\
+				High Beta & Fp2-Fp1 & $-2.07 \pm 16.01$ & $6.67 \pm 15.46$ & 0.030 \\
+				& F4-F3  & $-4.78 \pm 26.98$ & $-24.91 \pm 31.44$ & 0.018 \\
+				Gamma & F4-F3 & $-3.74 \pm 27.22$ & $-24.48 \pm 31.93$ & 0.019 \\
+				\bottomrule
+			\end{tabular}
+		\end{latin}
+	\end{table}
+	
+	\subsection{تفسیر}
+	بیماران ADHD در باند دلتا افزایش و در باند بتا کاهش قدرت مطلق در ناحیه فرونتال میانی داشتند. همچنین در تمام فرکانس‌ها، شاخص عدم تقارن فرونتال (خصوصاً در \lr{F4-F3}) راست‌گراتر از گروه کنترل بود. این تغییرات همبستگی معناداری با نتایج آزمون استروپ داشتند، که اهمیت QEEG را به‌عنوان یک نشانگر زیستی در تشخیص ADHD نشان می‌دهد.
+	
+	\section*{مراجع}
+	
+	\begin{latin}
+		\begin{itemize}
+			\item Yoon S-H, Oh J, Um YH, Seo HJ, Hong SC, Kim TW, Jeong J-H. (2024). Differences in Electroencephalography Power and Asymmetry at Frontal Region in Young Adults with Attention-deficit/hyperactivity Disorder: A Quantitative EEG Study. \textit{Clin Psychopharmacol Neurosci}, 22(3), 431--441. doi: \href{https://doi.org/10.9758/cpn.23.1104}{10.9758/cpn.23.1104}
+		\end{itemize}
+	\end{latin}
+\end{document}

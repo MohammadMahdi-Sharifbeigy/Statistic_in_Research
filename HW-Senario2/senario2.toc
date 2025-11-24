@@ -1,0 +1,33 @@
+\contentsline {section}{\numberline {1}مقدمه}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}سوال پژوهشی اصلی}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}اهمیت موضوع}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}روش‌شناسی}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}طرح مطالعه: سناریو ۲ - طراحی تکرار اندازه‌گیری}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}فرضیه‌ها}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}آزمون آماری}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}شرکت‌کنندگان}{4}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}نتایج}{4}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}مقایسه دو نقطه زمانی}{4}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}همبستگی EEG و شناخت}{4}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}پیش‌بینی}{4}{subsubsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.6}تفسیر}{4}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}تعریف قدرت نسبی EEG}{5}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}باندهای فرکانسی مورد تحلیل}{5}{subsection.2.8}%
+\contentsline {section}{\numberline {3}نتایج اصلی}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}تغییرات شناختی طولی}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}جدول کامل تغییرات شناختی}{7}{subsection.3.2}%
+\contentsline {section}{\numberline {4}همبستگی EEG و شناخت}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}ارتباط امواج کند با اختلال شناختی}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}ارتباط مثبت امواج آلفا با حفظ شناخت}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}خلاصه همبستگی‌ها}{8}{subsection.4.3}%
+\contentsline {section}{\numberline {5}مدل‌سازی پیش‌بینی}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}رگرسیون خطی برای پیش‌بینی شناخت}{8}{subsection.5.1}%
+\contentsline {section}{\numberline {6}مکانیزم‌های عصب‌فیزیولوژیکی}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}تفسیر امواج کند}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}نقش امواج آلفا}{9}{subsection.6.2}%
+\contentsline {section}{\numberline {7}کاربردهای بالینی}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}غربالگری پیش از DBS}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}مزایای qEEG نسبت به آزمون‌های سنتی}{10}{subsection.7.2}%
+\contentsline {section}{\numberline {8}محدودیت‌ها}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}محدودیت‌های مطالعه}{10}{subsection.8.1}%
+\contentsline {section}{\numberline {9}نتیجه‌گیری}{10}{section.9}%

@@ -1,0 +1,292 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\begin{document}
+	
+	\title{سناریو ۳: دو گروه، دو یا چند نقطه زمانی/شرایط (طرح ترکیبی)}
+	\author{محمدمهدی شریف بیگی}
+	\maketitle
+	
+	\section{مثال: طرح ترکیبی در مطالعه پارکینسون}
+	
+	\subsection{زمینه پژوهش}
+	مطالعه Subramanian و همکاران (۲۰۱۶) اثربخشی نوروفیدبک در بیماری پارکینسون را با استفاده از طرح ترکیبی بررسی کرده است.
+	
+	\subsection{فرضیه‌ها}
+	
+	\textbf{فرضیه صفر ($H_0$):} هیچ تعامل معناداری بین گروه و زمان وجود ندارد. تغییرات در نمرات حرکتی از پیش‌آزمون تا پس‌آزمون در هر دو گروه یکسان است.
+	
+	\textbf{فرضیه جایگزین ($H_1$):} تعامل معناداری بین گروه و زمان وجود دارد. تغییرات نمرات حرکتی در طول زمان به گروه‌بندی بیماران بستگی دارد.
+	
+	\subsection{ساختار داده‌ها}
+	
+	\textbf{عامل بین‌آزمودنی:} گروه (نوروفیدبک در مقابل کنترل)
+	\begin{itemize}
+		\item گروه ۱ (NF): نوروفیدبک + تمرین حرکتی (\lr{n=15})
+		\item گروه ۲ (MOT): تمرین حرکتی تنها (\lr{n=15})
+	\end{itemize}
+	
+	\textbf{عامل درون‌آزمودنی:} زمان (پیش‌تمرین در مقابل پس‌تمرین)
+	
+	\textbf{متغیر وابسته (\lr{DV}):} نمره مقیاس حرکتی MDS-UPDRS
+	
+	\subsubsection{مفاهیم بنیادی: عوامل بین‌آزمودنی و درون‌آزمودنی}
+	
+	\textbf{عامل بین‌آزمودنی (\lr{Between-Subjects Factor}):}
+	\begin{itemize}
+		\item هر شرکت‌کننده فقط در یک سطح از عامل قرار می‌گیرد
+		\item شرکت‌کنندگان مختلف در سطوح مختلف قرار دارند
+		\item مثال: گروه درمان (نوروفیدبک یا کنترل)
+		\item فرد نمی‌تواند همزمان در هر دو گروه باشد
+	\end{itemize}
+	
+	\textbf{عامل درون‌آزمودنی (\lr{Within-Subjects Factor}):}
+	\begin{itemize}
+		\item همان شرکت‌کننده در همه سطوح عامل قرار می‌گیرد
+		\item اندازه‌گیری‌های مکرر از همان فرد
+		\item مثال: زمان (پیش‌آزمون و پس‌آزمون)
+		\item همان فرد در هر دو زمان اندازه‌گیری می‌شود
+	\end{itemize}
+	
+	\begin{table}[h]
+		\centering
+		\caption{مقایسه عوامل بین‌آزمودنی و درون‌آزمودنی}
+		\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+			\hline
+			\textbf{ویژگی} & \textbf{بین‌آزمودنی} & \textbf{درون‌آزمودنی} \\
+			\hline
+			تخصیص افراد & هر فرد در یک سطح & هر فرد در همه سطوح \\
+			\hline
+			استقلال مشاهدات & مستقل & وابسته (همبسته) \\
+			\hline
+			کنترل تفاوت‌های فردی & ضعیف & قوی \\
+			\hline
+			تعداد شرکت‌کننده مورد نیاز & بیشتر & کمتر \\
+			\hline
+			خطر اثرات یادگیری/خستگی & ندارد & دارد \\
+			\hline
+			قدرت آماری & کمتر & بیشتر \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\subsection{آزمون آماری توصیه شده}
+	تحلیل واریانس ترکیبی (\lr{Mixed-Measures ANOVA}) - که شامل:
+	\begin{itemize}
+		\item عامل بین‌آزمودنی: گروه (نوروفیدبک در مقابل کنترل)
+		\item عامل درون‌آزمودنی: زمان (پیش در مقابل پس)
+	\end{itemize}
+	
+	\textbf{نکته مهم:} این آزمون ترکیبی است، نه صرفاً اندازه‌گیری‌های مکرر، زیرا:
+	\begin{itemize}
+		\item دارای هر دو نوع عامل است (بین‌آزمودنی + درون‌آزمودنی)
+		\item هدف اصلی بررسی تعامل گروه × زمان است
+		\item از \lr{Split-Plot ANOVA} نیز نام برده می‌شود
+	\end{itemize}
+	
+		\subsubsection{توضیح \lr{Split-Plot ANOVA}}
+	
+	\lr{Split-Plot ANOVA} نام دیگر \lr{Mixed-Measures ANOVA} است که از کشاورزی نشات گرفته:
+	
+	\textbf{تاریخچه نام:}
+	\begin{itemize}
+		\item در آزمایش‌های کشاورزی، زمین‌ها (\lr{plots}) به قطعات کوچک‌تر (\lr{sub-plots}) تقسیم می‌شدند
+		\item عامل اصلی (مثل نوع کود) به کل زمین اختصاص می‌یافت
+		\item عامل فرعی (مثل نوع بذر) به قطعات کوچک اختصاص می‌یافت
+	\end{itemize}
+	
+	\textbf{در مطالعه پارکینسون:}
+	\begin{itemize}
+		\item \textbf{\lr{Whole Plot Factor}:} گروه (نوروفیدبک یا کنترل) - بین‌آزمودنی
+		\item \textbf{\lr{Sub-Plot Factor}:} زمان (پیش یا پس) - درون‌آزمودنی
+		\item هر شرکت‌کننده فقط در یک گروه قرار دارد، اما در هر دو زمان اندازه‌گیری می‌شود
+	\end{itemize}
+	
+	\textbf{مزایای این طرح:}
+	\begin{itemize}
+		\item کنترل بهتر واریانس فردی (درون‌آزمودنی)
+		\item قدرت آماری بیشتر برای تشخیص تعامل گروه × زمان
+		\item کاهش تعداد شرکت‌کنندگان مورد نیاز
+	\end{itemize}
+	
+	\subsubsection{چرا از \lr{Two-Way ANOVA} استفاده نکردیم؟}
+	
+	\textbf{تفاوت کلیدی بین \lr{Mixed-Measures} و \lr{Two-Way ANOVA}:}
+	
+	\begin{table}[h]
+		\centering
+		\caption{مقایسه انواع تحلیل واریانس}
+		\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+			\hline
+			\textbf{ویژگی} & \textbf{\lr{Two-Way ANOVA}} & \textbf{\lr{Mixed-Measures ANOVA}} \\
+			\hline
+			ساختار داده & هر دو عامل بین‌آزمودنی & یک عامل بین‌آزمودنی + یک عامل درون‌آزمودنی \\
+			\hline
+			استقلال مشاهدات & همه مشاهدات مستقل & مشاهدات درون‌آزمودنی وابسته، بین‌آزمودنی مستقل \\
+			\hline
+			فرضیات & همگنی واریانس‌ها & همگنی واریانس‌ها + کرویت (sphericity) \\
+			\hline
+			خطای استاندارد & یک نوع خطا & دو نوع خطا (بین‌آزمودنی و درون‌آزمودنی) \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\textbf{در مطالعه پارکینسون:}
+	\begin{itemize}
+		\item هر بیمار فقط در یک گروه است (بین‌آزمودنی)
+		\item اما همان بیمار در دو زمان اندازه‌گیری می‌شود (درون‌آزمودنی)
+		\item مشاهدات پیش و پس برای همان فرد وابسته هستند
+		\item \lr{Two-Way ANOVA} فرض استقلال همه مشاهدات را نقض می‌کند
+	\end{itemize}
+	
+	\textbf{مثال اشتباه اگر از \lr{Two-Way ANOVA} استفاده کنیم:}
+	\begin{itemize}
+		\item نادیده گرفتن وابستگی درون‌فردی
+		\item تخمین اشتباه خطای استاندارد
+		\item افزایش خطای نوع اول (\lr{False Positive})
+		\item کاهش قدرت آماری
+	\end{itemize}
+	
+	\subsection{نمودار جریان طراحی مطالعه}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[
+			box/.style={rectangle, draw, minimum width=3.5cm, minimum height=1.2cm, text centered, font=\footnotesize, align=center},
+			arrow/.style={thick, -stealth}
+			]
+			
+			% Initial recruitment
+			\node[box] (recruit) at (0,8) {جذب بیماران پارکینسون \\ \lr{(n=30)}};
+			
+			% Randomization
+			\node[box] (random) at (0,6.5) {تصادفی‌سازی};
+			
+			% Group 1 - NF
+			\node[box] (nf1) at (-4,5) {گروه ۱: نوروفیدبک \\ \lr{(n=15)}};
+			\node[box] (nf2) at (-4,3.5) {\rl{هفته ۱-۴: }\\ rt-fMRI نوروفیدبک \\ + \rl{تمرین تصویرسازی حرکتی}};
+			\node[box] (nf3) at (-4,2) {\rl{هفته ۵-۱۰: }\\ \rl{ادامه تصویرسازی} \\ \rl{+ تمرین }Nintendo Wii};
+			
+			% Group 2 - MOT
+			\node[box] (mot1) at (4,5) {گروه ۲: کنترل \\ \lr{(n=15)}};
+			\node[box] (mot2) at (4,3.5) {\rl{هفته ۱-۴}: \\ \rl{تمرین حرکتی} \\ Nintendo Wii};
+			\node[box] (mot3) at (4,2) {\rl{هفته ۵-۱۰:} \\ \rl{ادامه تمرین حرکتی} \\ Nintendo Wii};
+			
+			% Assessment points
+			\node[box] (pre) at (0,0.5) {پیش‌آزمون: \\ MDS-UPDRS \\ "off-medication"};
+			\node[box] (mid) at (0,-0.8) {\rl{ارزیابی میانی (هفته ۴)}: \\ MDS-UPDRS \\ "on-medication"};
+			\node[box] (post) at (0,-2.1) {پس‌آزمون: \\ MDS-UPDRS \\ "off-medication"};
+			
+			% Arrows
+			\draw[arrow] (recruit) -- (random);
+			\draw[arrow] (random) -- (-2,5.5) -- (nf1);
+			\draw[arrow] (random) -- (2,5.5) -- (mot1);
+			\draw[arrow] (nf1) -- (nf2);
+			\draw[arrow] (nf2) -- (nf3);
+			\draw[arrow] (mot1) -- (mot2);
+			\draw[arrow] (mot2) -- (mot3);
+			\draw[arrow] (nf3) -- (-2,0.5) -- (pre);
+			\draw[arrow] (mot3) -- (2,0.5) -- (pre);
+			\draw[arrow] (pre) -- (mid);
+			\draw[arrow] (mid) -- (post);
+			
+		\end{tikzpicture}
+		\caption{نمودار جریان طراحی مطالعه با جزئیات مداخلات}
+	\end{figure}
+	
+	\textbf{ویژگی‌های کلیدی طراحی:}
+	\begin{itemize}
+		\item \textbf{طرح ترکیبی:} عامل بین‌آزمودنی (گروه) + عامل درون‌آزمودنی (زمان)
+		\item \textbf{کنترل‌شده تصادفی:} تخصیص تصادفی به گروه‌ها
+		\item \textbf{اندازه‌گیری مکرر:} ارزیابی در سه نقطه زمانی
+		\item \textbf{کورسازی:} ارزیاب کور نسبت به گروه‌بندی
+	\end{itemize}
+	
+	\section{نتایج}
+	
+	\subsection{تعامل معنادار گروه × زمان}
+	
+	\begin{table}[h]
+		\centering
+		\caption{نتایج تحلیل واریانس ترکیبی}
+		\begin{tabular}{lcccc}
+			\toprule
+			\textbf{گروه} & \textbf{پیش‌تمرین} & \textbf{پس‌تمرین} & \textbf{تغییر} & \textbf{فاصله اطمینان ۹۵٪} \\
+			\midrule
+			نوروفیدبک & - & - & \lr{-4.5} امتیاز & (\lr{-2.5} تا \lr{-6.6}) \\
+			کنترل & - & - & \lr{-1.9} امتیاز & (\lr{+2.3} تا \lr{-6.8}) \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\textbf{تحلیل اثرات ساده:}
+	\begin{itemize}
+		\item گروه نوروفیدبک بهبود معناداری در نمرات MDS-UPDRS از پیش به پس‌تمرین نشان داد
+		\item گروه کنترل بهبود کمتری داشت که از نظر آماری معنادار نبود
+	\end{itemize}
+	
+	\subsection{تفسیر}
+	
+	اگرچه تعامل اصلی گروه × زمان در اندازه‌گیری اولیه معنادار نبود (\lr{p = 0.11})، اما:
+	
+	\begin{enumerate}
+		\item بهبود \lr{4.5}امتیازی در گروه نوروفیدبک از نظر بالینی معنادار بود 
+		\item برای برخی اندازه‌گیری‌های ثانویه، تعامل گروه × زمان معنادار بود
+		\item این نتایج نشان می‌دهد که نوروفیدبک ممکن است فرآیند یادگیری مهارت‌های حرکتی را تسریع کند
+	\end{enumerate}
+	
+	\section{نتیجه‌گیری}
+	
+	این مطالعه نمونه عالی از \textbf{طرح ترکیبی} است که در آن:
+	\begin{itemize}
+		\item دو گروه مستقل (نوروفیدبک و کنترل) در طول زمان پیگیری شدند
+		\item هدف بررسی این بود که آیا یک گروه بیش از گروه دیگر در طول زمان تغییر کرده است
+		\item از تحلیل واریانس اندازه‌گیری‌های مکرر ترکیبی استفاده شد
+		\item تمرکز اصلی بر روی تعامل گروه × زمان بود
+	\end{itemize}
+	
+	این روش آماری برای ارزیابی مداخلات درمانی در شرایط کنترل‌شده بسیار مفید است و امکان تعیین اثربخشی نسبی مداخلات مختلف را فراهم می‌کند.
+	
+	
+	\subsection{روش‌های آماری استفاده شده}
+	
+	تحلیل داده‌ها با استفاده از نرم‌افزار SPSS نسخه ۲۰ انجام شد.
+	
+	\textbf{آزمون‌های مورد استفاده:}
+	\begin{itemize}
+		\item \textbf{Independent samples t-test:} برای بررسی تفاوت‌های پایه بین گروه‌ها
+		\item \textbf{Paired samples t-test:} برای بررسی تغییرات درون‌گروهی از پیش تا پس مداخله
+		\item \textbf{ANCOVA:} برای مقایسه نمرات پس‌آزمون با کنترل نمرات پیش‌آزمون
+		\item \textbf{Repeated measures ANOVA:} برای بررسی تغییرات وابسته به زمان
+		\item \textbf{FDR correction:} برای کنترل مقایسات چندگانه
+	\end{itemize}
+	
+	\subsection{محدودیت‌های مطالعه}
+	
+	\begin{itemize}
+		\item عدم وجود گروه کنترل با \lr{sham feedback} در اسکنر
+		\item حجم نمونه کوچک (مطالعه \lr{Phase I})
+		\item عدم پیگیری بلندمدت
+		\item عدم تجویز استراتژی تصویرسازی مشخص
+	\end{itemize}
+	
+	\section{مراجع}
+	
+	\begin{latin}
+		Subramanian, L., Morris, M. B., Brosnan, M., Turner, D. L., Morris, H. R., \& Linden, D. E. (2016). Functional magnetic resonance imaging neurofeedback-guided motor imagery training and motor training for Parkinson's disease: randomized trial. \textit{Frontiers in Behavioral Neuroscience}, 10, 111.
+		
+		Available at: \url{https://www.frontiersin.org/journals/behavioral-neuroscience/articles/10.3389/fnbeh.2016.00111/full}
+	\end{latin}
+	
+\end{document}

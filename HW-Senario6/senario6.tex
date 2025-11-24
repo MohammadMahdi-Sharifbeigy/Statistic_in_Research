@@ -1,0 +1,630 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+
+\begin{document}
+	
+	\title{سناریو ۶: طرح‌های درون‌آزمودنی پیچیده (چندین شرایط)}
+	\author{محمدمهدی شریف بیگی}
+	\maketitle
+	
+	\section{مثال: مولفه N400 در پردازش معنایی جمله}
+	
+	\subsection{زمینه پژوهش}
+	مطالعه بررسی مولفه N400 در پاسخ به جملات با پایان‌های معنایی منطبق (congruent) و ناسازگار (incongruent) انجام شده است. این مطالعه از طرح درون‌آزمودنی استفاده می‌کند که در آن همه شرکت‌کنندگان در تمام شرایط آزمایشی شرکت می‌کنند.
+	
+	\subsection{سوال پژوهشی}
+	آیا دامنه مولفه N400 در سه شرایط مختلف جمله (منطبق، ناسازگار، بی‌معنا) تفاوت معناداری دارد؟
+	
+	\subsection{فرضیه‌ها}
+	
+	\textbf{فرضیه صفر ($H_0$):} میانگین دامنه N400 در همه شرایط برابر است.\\
+	\textbf{فرضیه جایگزین ($H_1$):} میانگین دامنه N400 در حداقل یکی از شرایط متفاوت است.
+	
+	\subsection{ساختار داده‌ها}
+	
+	\textbf{عامل درون‌آزمودنی:} شرایط جمله (سه سطح: منطبق، ناسازگار، بی‌معنا). هر شرکت‌کننده همه شرایط را تجربه می‌کند.\\
+	\textbf{متغیر وابسته:} دامنه میانگین N400 (میکروولت) در پنجره زمانی 300-500 میلی‌ثانیه.
+	
+	\begin{table}[ht]
+		\centering
+		\caption{مشخصات شرایط آزمایشی}
+		\begin{tabular}{|p{3cm}|p{4cm}|p{7cm}|}
+			\hline
+			\textbf{شرایط} & \textbf{مثال} & \textbf{توضیح} \\
+			\hline
+			منطبق & «او قهوه را با شکر می‌نوشد» & پایان منطقی و قابل انتظار \\
+			\hline
+			ناسازگار & «او قهوه را با جوراب می‌نوشد» & پایان غیرمنطقی اما دستوری صحیح \\
+			\hline
+			بی‌معنا & «آبی نظریه خوشحال مدار» & فاقد معنای منطقی \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\subsubsection{مفهوم مولفه N400}
+	
+	\textbf{N400 چیست؟}
+	\begin{itemize}
+		\item پتانسیل برانگیخته منفی با اوج حدود 400 میلی‌ثانیه
+		\item شاخص پردازش معنایی و یکپارچگی معنایی
+		\item حداکثر در نواحی مرکزی-آهیانه‌ای (\lr{Cz, Pz})
+		\item حساس به انتظارات معنایی و احتمال بسته‌شدن (\lr{Cloze Probability})
+	\end{itemize}
+	
+	\textbf{مولفه‌های همراه:}
+	\begin{itemize}
+		\item \textbf{پتانسیل تشخیص (\lr{RP}):} حدود 250 میلی‌ثانیه، مربوط به تشخیص کلمه
+		\item \textbf{مولفه مثبت دیرهنگام (\lr{LPC/P600}):} حدود 600 میلی‌ثانیه، مرتبط با بازتحلیل معنایی
+		\item \textbf{توزیع فضایی:} N400 عمدتاً در نیمکره چپ و نواحی گیجگاهی
+	\end{itemize}
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[scale=0.8]
+			% Time axis
+			\draw[thick, ->] (0,0) -- (12,0) node[right] {زمان (ms)};
+			\foreach \x/\label in {0/-200, 2/0, 4/200, 6/400, 8/600, 10/800, 12/1000}
+			\draw (\x,0.1) -- (\x,-0.1) node[below, font=\tiny] {\label};
+			
+			% Voltage axis
+			\draw[thick, ->] (0,-3) -- (0,2) node[above] {ولتاژ (μV)};
+			\foreach \y/\label in {-3/-5, -2/-3, -1/-1, 0/0, 1/2, 2/4}
+			\draw (0.1,\y) -- (-0.1,\y) node[left, font=\tiny] {\label};
+			
+			% Congruent condition (blue)
+			\draw[thick, blue] (2,0) .. controls (3,0.3) and (4,0.2) .. (5,0.1)
+			.. controls (6,-0.2) and (7,-0.3) .. (8,0.2)
+			.. controls (9,0.4) and (10,0.3) .. (11,0.1);
+			
+			% Incongruent condition (red) - larger N400
+			\draw[thick, red] (2,0) .. controls (3,0.2) and (4,0) .. (5,-0.5)
+			.. controls (6,-2.2) and (7,-1.8) .. (8,0.8)
+			.. controls (9,1.2) and (10,0.8) .. (11,0.2);
+			
+			% Meaningless condition (green) - largest N400
+			\draw[thick, green] (2,0) .. controls (3,0.1) and (4,-0.2) .. (5,-0.8)
+			.. controls (6,-2.8) and (7,-2.2) .. (8,1.4)
+			.. controls (9,1.6) and (10,1.1) .. (11,0.3);
+			
+			% Component annotations
+			\draw[gray, dashed] (4.5,-3) -- (4.5,2);
+			\node[gray] at (4.5,1.5) {RP};
+			\draw[gray, dashed] (6,-3) -- (6,2);
+			\node[gray] at (6,-2.5) {N400};
+			\draw[gray, dashed] (8.5,-3) -- (8.5,2);
+			\node[gray] at (8.5,1.7) {LPC};
+			
+			% Legend
+			\draw[blue, thick] (0.5,-2) -- (1.5,-2);
+			\node[right] at (1.6,-2) {\small منطبق};
+			\draw[red, thick] (0.5,-2.5) -- (1.5,-2.5);
+			\node[right] at (1.6,-2.5) {\small ناسازگار};
+			\draw[green, thick] (0.5,-3) -- (1.5,-3);
+			\node[right] at (1.6,-3) {\small بی‌معنا};
+			
+		\end{tikzpicture}
+		\caption{نمونه امواج ERP برای سه شرایط جمله}
+	\end{figure}
+	
+	\subsection{آزمون آماری توصیه شده}
+	
+	\textbf{تحلیل واریانس اندازه‌گیری‌های مکرر (\lr{Repeated Measures ANOVA})}
+	
+	در صورت معنادار بودن، آزمون‌های تعقیبی (مثل \lr{Bonferroni}) انجام می‌شود.
+	
+	\subsubsection{انتخاب آزمون آماری}
+	
+	\begin{table}[ht]
+		\centering
+		\caption{معیارهای انتخاب آزمون}
+		\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+			\hline
+			\textbf{ویژگی} & \textbf{\lr{Repeated Measures ANOVA}} & \textbf{\lr{Friedman Test}} \\
+			\hline
+			نوع داده & کمّی پیوسته & کمّی یا ترتیبی \\
+			\hline
+			توزیع داده & نرمال در هر شرایط & هر نوع توزیعی \\
+			\hline
+			کرویت (Sphericity) & فرض برابری کوواریانس‌ها & فرض نمی‌کند \\
+			\hline
+			قدرت آماری & بیشتر (اگر فرضیات برقرار باشند) & کمتر اما مقاوم‌تر \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\textbf{در این مطالعه:}
+	\begin{itemize}
+		\item داده‌ها تقریباً نرمال بودند
+		\item از \lr{Repeated Measures ANOVA } استفاده شد
+		\item آزمون‌های تعقیبی: \lr{Bonferroni correction}
+	\end{itemize}
+	
+	\subsection{روش اجرای مطالعه}
+	
+	\subsubsection{شرکت‌کنندگان}
+	\begin{itemize}
+		\item 20 بزرگسال سالم (سن: 18-35 سال)
+		\item 9 زن، 3 چپ‌دست
+		\item انگلیسی زبان اول تمام شرکت‌کنندگان
+		\item 12 تک‌زبانه، 8 دوزبانه یا چندزبانه
+	\end{itemize}
+	
+	\subsubsection{ابزارها و روش‌ها}
+	
+	\textbf{ثبت EEG:}
+	\begin{itemize}
+		\item سیستم \lr{Bio Semi 128 } کاناله
+		\item نرخ نمونه‌برداری: \lr{512} هرتز
+		\item فیلتر: \lr{0.1}-\lr{45} هرتز
+		\item مرجع: میانگین مشترک (\lr{Common Average})
+		\item الکترود زمین: بین Fpz و Fz
+	\end{itemize}
+	
+	\textbf{محرک‌ها:}
+	\begin{itemize}
+		\item 442 جمله (221 جفت منطبق-ناسازگار)
+		\item طول جملات: 4 تا 8 کلمه
+		\item کلمات ساده برای سن 5 سال به بالا
+		\item بدون آهنگ کلامی (Non-prosodic)
+		\item ارائه شنیداری از طریق هدفون
+	\end{itemize}
+	
+	\textbf{پروتکل آزمایش:}
+	\begin{itemize}
+		\item نمایش علامت تثبیت نگاه
+		\item پخش جمله شنیداری
+		\item مکث 2 ثانیه‌ای
+		\item سؤال: «آیا جمله آن‌گونه که انتظار می‌رفت پایان یافت؟»
+		\item پاسخ با کلیدهای پیکان (بله/خیر)
+	\end{itemize}
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[scale=1.2]
+			% Timeline
+			\draw[thick, ->] (0,0) -- (12,0) node[right] {زمان};
+			
+			% Trial structure
+			\draw[blue, thick] (1,0.5) -- (1,1.5);
+			\node[blue, above] at (1,1.7) {\small \rl{علامت تثبیت}};
+			
+			\draw[red, thick] (3,0.5) -- (3,1.5);
+			\node[red, above] at (3,1.7) {\small \rl{پخش جمله}};
+			
+			\draw[green, thick] (6,0.5) -- (6,1.5);
+			\node[green, above] at (6,1.7) {\small \rl{مکث}};
+			
+			\draw[orange, thick] (8,0.5) -- (8,1.5);
+			\node[orange, above] at (8,1.7) {\small \rl{سؤال}};
+			
+			\draw[purple, thick] (10,0.5) -- (10,1.5);
+			\node[purple, above] at (10,1.7) {\small \rl{پاسخ}};
+			
+			% Time intervals
+			\foreach \x/\label in {1/0, 3/2, 6/4, 8/6, 10/8}
+			\draw (\x,0.1) -- (\x,-0.1) node[below] {\label s};
+			
+			% Example sentences
+			\node[align=center] at (6,-2) {
+				\textbf{\rl{مثال جملات:}}\\
+				\small \rl{منطبق: «او نان را با کره می‌مالد»}\\
+				\small \rl{ناسازگار: «او نان را با جوراب می‌مالد»}\\
+				\small \rl{بی‌معنا: «آبی نظریه خوشحال مدار»}
+			};
+			
+		\end{tikzpicture}
+		\caption{ساختار یک کوشش آزمایشی}
+	\end{figure}
+	
+	\subsection{تجزیه و تحلیل داده‌ها}
+	
+	\subsubsection{پیش‌پردازش EEG}
+	
+	\textbf{مراحل پردازش در \lr{EEGLAB}:}
+	\begin{itemize}
+		\item فیلتر \lr{Chebyshev II} با پهنای باند \lr{0.1}-\lr{45} هرتز
+		\item رد کانال‌های بد (بیش از \lr{3} انحراف معیار)
+		\item جایگذاری کانال‌ها با روش کروی \lr{EEGLAB}
+		\item مرجع‌گیری به میانگین مشترک
+		\item تنظیم زمان بر اساس شروع آخرین کلمه
+		\item \lr{Epoching}: -\lr{200} تا +\lr{1000} میلی‌ثانیه
+		\item \lr{Baseline correction}: -\lr{200} تا \lr{0} میلی‌ثانیه
+	\end{itemize}
+	
+	\subsubsection{استخراج مولفه‌های ERP}
+	
+	\textbf{پنجره‌های زمانی تحلیل:}
+	\begin{itemize}
+		\item \textbf{RP (\lr{Recognition Potential}):} \lr{245-255 ms}
+		\item \textbf{N400:} \lr{395-405 ms}
+		\item \textbf{LPC (\lr{P600}):} \lr{595-605 ms}
+	\end{itemize}
+	
+	\textbf{الکترودهای مورد تحلیل:}
+	\begin{itemize}
+		\item \textbf{خط میانی:} \lr{Fz, Cz, Pz}
+		\item \textbf{نواحی جانبی:} \lr{F7, T7, P7 } (تحلیل تکمیلی)
+		\item \textbf{ناحیه اصلی N400:} \lr{Cz, Pz}
+	\end{itemize}
+	
+	\subsection{تحلیل آماری}
+	
+	\subsubsection{تحلیل اصلی}
+	
+	\textbf{آزمون t تک‌نمونه‌ای:}
+	در الکترود Cz در پنجره 395-405 میلی‌ثانیه:
+	$$t = \frac{\bar{X}_{incongruent} - \bar{X}_{congruent}}{SE_{difference}}$$
+	
+	\textbf{تحلیل واریانس اندازه‌گیری‌های مکرر:}
+	$$F = \frac{MS_{between}}{MS_{error}}$$
+	
+	با درجات آزادی: $df_{between} = k-1$، $df_{error} = (n-1)(k-1)$
+	
+	که $k$ تعداد شرایط و $n$ تعداد آزمودنی‌ها است.
+	
+	\subsubsection{تحلیل‌های تکمیلی}
+	
+	\textbf{عوامل مورد بررسی:}
+	\begin{itemize}
+		\item احتمال بسته‌شدن (\lr{Close Probability})
+		\item ترتیب ارائه (منطبق یا ناسازگار اول)
+		\item تقسیم‌بندی زبانی (خطای معنایی فقط یا معنایی+دستوری)
+		\item ربع آزمایش (اثر خستگی)
+	\end{itemize}
+	
+	\textbf{تصحیح چندگانه:}
+	\begin{itemize}
+		\item Bonferroni برای آزمون‌های t چندگانه
+		\item تصحیح کرویت با Greenhouse-Geisser در صورت نیاز
+	\end{itemize}
+	
+	\section{نتایج مطالعه}
+	
+	\subsection{دقت رفتاری}
+	
+	\begin{table}[ht]
+		\centering
+		\caption{عملکرد رفتاری شرکت‌کنندگان}
+		\begin{tabular}{lcc}
+			\toprule
+			\textbf{شرایط} & \textbf{دقت (٪)} & \textbf{انحراف معیار} \\
+			\midrule
+			منطبق (تشخیص صحیح) & \lr{98.5} & \lr{1.2} \\
+			ناسازگار (تشخیص صحیح) & \lr{97.8} & \lr{1.8} \\
+			میانگین کلی & \lr{98.1} & \lr{1.5} \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	همه شرکت‌کنندگان دقت بالای 97٪ داشتند، که نشان‌دهنده درک مناسب تکلیف است.
+	
+	\subsection{تحلیل مولفه N400}
+	
+	\textbf{فرضیه‌ها:}
+	\begin{itemize}
+		\item $H_0$: میانگین دامنه N400 در شرایط منطبق و ناسازگار برابر است
+		\item $H_1$: میانگین دامنه N400 در این شرایط متفاوت است
+	\end{itemize}
+	
+	\textbf{آزمون آماری:} آزمون t تک‌نمونه‌ای در Cz
+	
+	\textbf{نتایج:}
+	\begin{itemize}
+		\item $t(19) = 4.432$، $p = 7.687 \times 10^{-5}$
+		\item تفاوت دامنه: \lr{1.43} $\mu V$در \lr{Cz}، \lr{1.46} $\mu V$ در \lr{Pz}
+		\item Cohen's $d = 0.99$ (اندازه اثر بزرگ)
+	\end{itemize}
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[scale=0.8]
+			% Bar chart for N400 amplitudes
+			\draw[thick, ->] (0,0) -- (0,5) node[above] {\rl{دامنه} \lr{N400 ($\mu V$)}};
+			\draw[thick, ->] (0,0) -- (8,0) node[right] {شرایط};
+			
+			% Y-axis labels
+			\foreach \y/\label in {0/0, 1/-1, 2/-2, 3/-3, 4/-4}
+			\draw (0.1,\y) -- (-0.1,\y) node[left] {\label};
+			
+			% Bars
+			\fill[blue!40] (1,0) rectangle (2.5,1.2);
+			\node[below] at (1.75,-0.3) {منطبق};
+			\node[above] at (1.75,1.5) {-1.2};
+			
+			\fill[red!40] (4,0) rectangle (5.5,2.6);
+			\node[below] at (4.75,-0.3) {ناسازگار};
+			\node[above] at (4.75,3) {-2.6};
+			
+			% Significance indicator
+			\draw[thick] (1.75,3.8) -- (4.75,3.8);
+			\draw (1.75,3.7) -- (1.75,3.9);
+			\draw (4.75,3.7) -- (4.75,3.9);
+			\node at (3.25,4) {***};
+			\node[font=\small] at (3.25,4.4) {$p < 0.001$};
+			
+			% Error bars
+			\draw (1.75,1.2) -- (1.75,1.5);
+			\draw (1.65,1.5) -- (1.85,1.5);
+			\draw (1.75,1.2) -- (1.75,0.9);
+			\draw (1.65,0.9) -- (1.85,0.9);
+			
+			\draw (4.75,2.6) -- (4.75,3.1);
+			\draw (4.65,3.1) -- (4.85,3.1);
+			\draw (4.75,2.6) -- (4.75,2.1);
+			\draw (4.65,2.1) -- (4.85,2.1);
+			
+		\end{tikzpicture}
+		\caption{مقایسه دامنه N400 بین شرایط منطبق و ناسازگار}
+	\end{figure}
+	
+	\subsection{تحلیل مولفه‌های همراه}
+	
+	\textbf{پتانسیل تشخیص (\lr{RP}) در ms 250:}
+	\begin{itemize}
+		\item اثر معنادار در \lr{Pz}: $t(19) = 4.857$، $p = 1.627 \times 10^{-4}$
+		\item اثر غیرمعنادار در \lr{Fz} و \lr{Cz} (بعد از تصحیح \lr{Bonferroni})
+	\end{itemize}
+	
+	\textbf{مولفه مثبت دیرهنگام (LPC) در ms 600:}
+	\begin{itemize}
+		\item اثر معنادار در \lr{Cz}: $t(19) = 3.585$، $p = 0.011$
+		\item اثر غیرمعنادار در Fz و Pz (بعد از تصحیح \lr{Bonferroni})
+	\end{itemize}
+	
+	\subsection{تحلیل واریانس اندازه‌گیری‌های مکرر}
+	
+	\textbf{اثرات اصلی:}
+	
+	\begin{table}[ht]
+		\centering
+		\caption{نتایج ANOVA برای عوامل مختلف}
+		\begin{tabular}{lccccc}
+			\toprule
+			\textbf{عامل} & \textbf{الکترود} & \textbf{زمان} & \textbf{F} & \textbf{p-value} & \textbf{$\eta^2$} \\
+			\midrule
+			احتمال بسته‌شدن & Fz & \lr{400 ms} & \lr{0.677} & \lr{0.570} & \lr{0.035} \\
+			& Cz &\lr{400 ms} & \lr{1.166} & \lr{0.331} &\lr{ 0.058} \\
+			& Pz & \lr{400 ms} & \lr{0.762} & \lr{0.520} & \lr{0.038} \\
+			\midrule
+			ترتیب ارائه & Fz & \lr{250 ms} & \lr{4.552} & \lr{0.046*} & \lr{0.193} \\
+			& Cz & \lr{400 ms} & \lr{0.423} & \lr{0.523} & \lr{0.022} \\
+			& Pz & \lr{600 ms} & \lr{9.046} & \lr{0.007**} & \lr{0.323} \\
+			\midrule
+			تقسیم زبانی & Fz & \lr{400 ms} & \lr{4.387} & \lr{0.050*} & \lr{0.188} \\
+			& Cz & \lr{400 ms} & \lr{1.247} & \lr{0.278} & \lr{0.062} \\
+			& Pz & \lr{400 ms} & \lr{2.320} & \lr{0.144} & \lr{0.109} \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\subsection{تحلیل نواحی جانبی}
+	
+	\textbf{الکترودهای نیمکره چپ:}
+	\begin{itemize}
+		\item \lr{F7}: اثر معنادار در ms 250 ($t = -3.191$، $p = 0.003$)
+		\item \lr{T7}: اثر معنادار در ms 600 ($t = -2.712$، $p = 0.010$)
+		\item \lr{P7}: اثر معنادار در ms 600 ($t = -3.472$، $p = 0.001$)
+	\end{itemize}
+	
+	این الگو نشان‌دهنده گسترش فعالیت N400 در نواحی گیجگاهی و آهیانه‌ای چپ است.
+	
+	\section{تفسیر نتایج}
+	
+	\subsection{یافته‌های اصلی}
+	
+	\textbf{رد فرضیه صفر:}
+	فرضیه صفر در سطح $p < 0.001$ رد شد. جملات ناسازگار N400 بزرگ‌تر و معناداری نسبت به جملات منطبق ایجاد کردند.
+	
+	\textbf{الگوی نتایج:}
+	\begin{itemize}
+		\item \textbf{سلسله‌مراتب N400:} بی‌معنا > ناسازگار > منطبق
+		\item \textbf{توزیع فضایی:} مرکزی-آهیانه‌ای با گسترش به نواحی گیجگاهی چپ
+		\item \textbf{مولفه‌های همراه:} RP در شرایط منطبق، LPC در شرایط ناسازگار
+	\end{itemize}
+	
+	\subsection{تفسیر علمی}
+	
+	\textbf{N400 به عنوان شاخص یکپارچگی معنایی:}
+	\begin{itemize}
+		\item دامنه بزرگ‌تر N400 نشان‌دهنده دشواری بیشتر در یکپارچه‌سازی معنایی
+		\item جملات ناسازگار نیازمند تلاش بیشتر برای پردازش معنایی
+		\item الگوی سلسله‌مراتبی تأیید نظریه پیش‌بینی معنایی
+	\end{itemize}
+	
+	\textbf{اهمیت مولفه‌های همراه:}
+	\begin{itemize}
+		\item \lr{RP:} تشخیص زودهنگام انطباق معنایی
+		\item \lr{LPC/P600}: بازتحلیل و بازارزیابی معنایی
+		\item توزیع فضایی متفاوت نشان‌دهنده شبکه‌های عصبی مجزا
+	\end{itemize}
+	
+	\section{آزمون‌های تعقیبی}
+	
+	\subsection{مقایسات چندگانه}
+	
+	پس از یافتن تفاوت معنادار در ANOVA، آزمون‌های تعقیبی Bonferroni انجام شد:
+	
+	\textbf{مقایسه‌های جفتی در N400 \lr{(400 ms)}:}
+	\begin{itemize}
+		\item ناسازگار vs منطبق: $p < 0.001$، $d = 0.99$
+		\item بی‌معنا vs منطبق: $p < 0.001$، $d = 1.24$
+		\item بی‌معنا vs ناسازگار: $p = 0.003$، $d = 0.68$
+	\end{itemize}
+	
+	\section{تحلیل توپوگرافی}
+	
+	\subsection{توزیع فضایی N400}
+	
+	\textbf{تحلیل خوشه‌ای فضایی-زمانی:}
+	\begin{itemize}
+		\item خوشه‌های منفی معنادار در نواحی مرکزی-آهیانه‌ای (\lr{250-600 ms})
+		\item خوشه‌های مثبت در نواحی پیشانی-گیجگاهی چپ
+		\item گسترش به نواحی آهیانه‌ای-پس‌سری در زمان‌های دیرتر
+	\end{itemize}
+	
+	\textbf{الگوی زمان-فضا:}
+	\begin{itemize}
+		\item \lr{150-300 ms}: فعالیت پیشانی چپ (RP)
+		\item \lr{250-600 ms}: فعالیت مرکزی-آهیانه‌ای (\lr{N400})
+		\item \lr{600-850 ms}: فعالیت گیجگاهی-آهیانه‌ای (LPC)
+	\end{itemize}
+	
+	\section{محدودیت‌ها و ملاحظات}
+	
+	\subsection{محدودیت‌های روش‌شناختی}
+	
+	\begin{itemize}
+		\item \textbf{ترتیب ثابت:} محرک‌ها به ترتیب یکسان ارائه شدند
+		\item \textbf{اثر تکرار:} هر جمله دو بار (منطبق و ناسازگار) ارائه شد
+		\item \textbf{فقدان آهنگ کلامی:} ممکن است طبیعی نباشد
+		\item \textbf{حجم نمونه:} 20 نفر برای تعمیم‌پذیری محدود
+	\end{itemize}
+	
+	\subsection{فرضیات \lr{Repeated Measures ANOVA}}
+	
+	\textbf{فرضیات برقرار شده:}
+	\begin{itemize}
+		\item متغیر وابسته پیوسته: دامنه N400
+		\item نمونه‌های وابسته: همه آزمودنی‌ها همه شرایط را تجربه کردند
+		\item نرمال بودن: تقریباً برقرار در همه شرایط
+	\end{itemize}
+	
+	\textbf{نقض کرویت (Sphericity):}
+	\begin{itemize}
+		\item آزمون Mauchly معنادار در برخی مقایسه‌ها
+		\item تصحیح Greenhouse-Geisser اعمال شد
+		\item نتایج پس از تصحیح همچنان معنادار باقی ماندند
+	\end{itemize}
+	
+	\section{کاربردهای بالینی و کاربردی}
+	
+	\subsection{ارزیابی اختلالات زبانی}
+	
+	\begin{itemize}
+		\item تشخیص اختلالات پردازش معنایی
+		\item ارزیابی عینی توانایی‌های زبانی
+		\item پیگیری پیشرفت درمان‌های گفتار-زبان
+		\item تمایز بین انواع مختلف آفازی
+	\end{itemize}
+	
+	\section{نتیجه‌گیری}
+	
+	این مطالعه نمونه عالی از \textbf{تحلیل واریانس اندازه‌گیری‌های مکرر} در تحقیقات الکتروفیزیولوژی است که در آن:
+	
+	\begin{itemize}
+		\item یک گروه در چندین شرایط (منطبق، ناسازگار، بی‌معنا) تست شد
+		\item از \lr{Repeated Measures ANOVA } برای تحلیل اصلی استفاده شد
+		\item آزمون‌های تعقیبی Bonferroni برای مقایسات جفتی انجام شد
+		\item تصحیحات مناسب برای نقض فرضیات اعمال شد
+	\end{itemize}
+	
+	\textbf{یافته‌های کلیدی:}
+	\begin{itemize}
+		\item N400 حساس به درجات مختلف ناسازگاری معنایی
+		\item الگوی سلسله‌مراتبی: بی‌معنا > ناسازگار > منطبق
+		\item توزیع فضایی مشخص در نواحی مرکزی-آهیانه‌ای و گیجگاهی چپ
+		\item مولفه‌های همراه (\lr{RP, LPC}) نقش‌های مکمل در پردازش معنایی
+	\end{itemize}
+	
+	\textbf{اهمیت روش‌شناختی:}
+	\begin{itemize}
+		\item کاربرد صحیح طرح درون‌آزمودنی برای کنترل تفاوت‌های فردی
+		\item استفاده مناسب از آزمون‌های تعقیبی و تصحیحات چندگانه
+		\item تحلیل جامع توپوگرافی و توزیع زمان-فضا
+		\item کنترل متغیرهای مخدوشگر احتمالی
+	\end{itemize}
+	
+	\textbf{کاربردهای عملی:}
+	\begin{itemize}
+		\item توسعه ابزارهای تشخیصی برای اختلالات زبانی
+		\item استانداردسازی تحقیقات N400 با مجموعه محرک عمومی
+		\item ارزیابی عینی توانایی‌های پردازش معنایی
+		\item پایه‌گذاری برای مطالعات آینده در جمعیت‌های مختلف
+	\end{itemize}
+	
+	\section{فرمول‌های آماری}
+	
+	\subsection{تحلیل واریانس اندازه‌گیری‌های مکرر}
+	
+	\begin{equation}
+		F = \frac{MS_{between}}{MS_{error}}
+	\end{equation}
+	
+	که در آن:
+	\begin{itemize}
+		\item $MS_{between} = \frac{SS_{between}}{df_{between}}$
+		\item $MS_{error} = \frac{SS_{error}}{df_{error}}$
+		\item $df_{between} = k - 1$ (\lr{k} = تعداد شرایط)
+		\item $df_{error} = (n-1)(k-1)$ (\lr{n} = تعداد آزمودنی‌ها)
+	\end{itemize}
+	
+	\subsection{تصحیح کرویت}
+	
+	درصورت نقض فرضیه کرویت:
+	
+	\begin{equation}
+		F_{corrected} = \frac{MS_{between}}{MS_{error}} \times \varepsilon
+	\end{equation}
+	
+	که $\varepsilon$ ضریب تصحیح Greenhouse-Geisser است.
+	
+	\subsection{اندازه اثر}
+	
+	\begin{equation}
+		\eta^2_{partial} = \frac{SS_{effect}}{SS_{effect} + SS_{error}}
+	\end{equation}
+	
+	راهنمای تفسیر:
+	\begin{itemize}
+		\item کوچک: $\eta^2 = 0.01$
+		\item متوسط: $\eta^2 = 0.06$
+		\item بزرگ: $\eta^2 = 0.14$
+	\end{itemize}
+	
+	\subsection{تصحیح Bonferroni}
+	
+	برای $k$ مقایسه:
+	
+	\begin{equation}
+		\alpha_{corrected} = \frac{\alpha}{k}
+	\end{equation}
+	
+	یا محاسبه p-value تصحیح شده:
+	
+	\begin{equation}
+		p_{corrected} = p_{observed} \times k
+	\end{equation}
+	
+	\section{مراجع}
+	
+	\begin{latin}
+		\begin{enumerate}
+			\item Toffolo, K. K., Freedman, E. G., \& Foxe, J. J. (2022). Evoking the N400 Event-related Potential (ERP) Component Using a Publicly Available Novel Set of Sentences with Semantically Incongruent or Congruent Eggplants (Endings). \textit{Neuroscience}, 501, 143-158. \href{https://doi.org/10.1016/j.neuroscience.2022.07.030}{https://doi.org/10.1016/j.neuroscience.2022.07.030}
+			
+			\item Kutas, M., \& Hillyard, S. A. (1980). Reading senseless sentences: Brain potentials reflect semantic incongruity. \textit{Science}, 207(4427), 203-205.
+			
+			\item Kutas, M., \& Hillyard, S. A. (1984). Brain potentials during reading reflect word expectancy and semantic association. \textit{Nature}, 307(5947), 161-163.
+			
+			\item Lau, E. F., Phillips, C., \& Poeppel, D. (2008). A cortical network for semantics: (de)constructing the N400. \textit{Nature Reviews Neuroscience}, 9(12), 920-933.
+			
+			\item Brown, C., \& Hagoort, P. (1993). The processing nature of the N400: Evidence from masked priming. \textit{Journal of Cognitive Neuroscience}, 5(1), 34-44.
+			
+			\item Federmeier, K. D., \& Kutas, M. (1999). A rose by any other name: Long-term memory structure and sentence processing. \textit{Journal of Memory and Language}, 41(4), 469-495.
+			
+			\item Block, C. K., \& Baldwin, C. L. (2010). Cloze probability and completion norms for 498 sentences: Behavioral and neural validation using event-related potentials. \textit{Behavior Research Methods}, 42(3), 665-670.
+		\end{enumerate}
+	\end{latin}
+	
+\end{document}

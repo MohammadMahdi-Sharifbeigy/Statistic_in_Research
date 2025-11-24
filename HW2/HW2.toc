@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}ایده حسی و مفهوم اصلی}{3}{section.1}%
+\contentsline {section}{\numberline {2}تعریف ریاضی و پارامترها}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}پارامترهای اصلی: درجات آزادی}{3}{subsection.2.1}%
+\contentsline {section}{\numberline {3}ویژگی‌ها و شکل توزیع}{4}{section.3}%
+\contentsline {section}{\numberline {4}چه زمانی از توزیع F استفاده کنیم؟}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}آزمون F برای برابری واریانس‌ها}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}تحلیل واریانس (ANOVA)}{5}{subsection.4.2}%
+\contentsline {section}{\numberline {5}مثال عملی: آزمون ANOVA}{5}{section.5}%

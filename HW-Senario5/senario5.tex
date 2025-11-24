@@ -1,0 +1,603 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\begin{document}
+	
+	\title{سناریو ۵: مقایسه سه یا چند گروه مستقل با معیارهای EEG}
+	\author{محمدمهدی شریف بیگی}
+	\maketitle
+	
+	\section{مثال: تحلیل جفت‌شدگی متقاطع فرکانسی در آلزایمر}
+	
+	\subsection{زمینه پژوهش}
+	مطالعه بررسی خصوصیات جفت‌شدگی متقاطع فرکانسی (\lr{Cross-Frequency Coupling}) در \lr{EEG} حالت استراحت بیماران مبتلا به اختلال شناختی خفیف (\lr{MCI})، بیماری آلزایمر (\lr{AD}) و افراد سالم (\lr{HC}) انجام شده است. این مطالعه به بررسی تغییرات مکانیسم‌های عصبی در مراحل مختلف اختلال شناختی می‌پردازد.
+	
+	\subsection{سوال پژوهشی}
+	آیا بین سه گروه افراد سالم، بیماران MCI و بیماران آلزایمر در شدت جفت‌شدگی متقاطع فرکانسی EEG تفاوت معناداری وجود دارد؟
+	
+	\subsection{فرضیه‌ها}
+	
+	\textbf{فرضیه صفر ($H_0$):} میانگین شدت جفت‌شدگی در هر سه گروه برابر است ($\mu_1 = \mu_2 = \mu_3$).\\
+	\textbf{فرضیه جایگزین ($H_1$):} حداقل یکی از میانگین‌های گروه‌ها متفاوت است.
+	
+	\subsection{ساختار داده‌ها}
+	
+	\textbf{عامل بین‌آزمودنی:} گروه (سه سطح: \lr{HC}، \lr{MCI}، \lr{AD}). هر شرکت‌کننده فقط در یک گروه قرار دارد.\\
+	\textbf{متغیر وابسته:} میانگین قدرت جفت‌شدگی متقاطع فرکانسی (\lr{MI: Modulation Index}).
+	
+	\begin{table}[h]
+		\centering
+		\caption{مشخصات گروه‌های مطالعه}
+		\begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+			\hline
+			\textbf{گروه} & \textbf{تعداد} & \textbf{سن میانگین} & \textbf{جنسیت (زن/مرد)} \\
+			\hline
+			HC (کنترل) & \lr{43} & \lr{68.2} ± \lr{7.4} & \lr{22/21 }\\
+			\hline
+			MCI & \lr{46} & \lr{69.8} ± \lr{6.9} & \lr{24/22} \\
+			\hline
+			AD (آلزایمر) & \lr{43} & \lr{71.1} ± \lr{8.2} & \lr{21/22} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\subsubsection{مفهوم جفت‌شدگی متقاطع فرکانسی (CFC)}
+	
+	\textbf{CFC چیست؟}
+	\begin{itemize}
+		\item ارتباط آماری بین فعالیت‌های مغزی در باندهای فرکانسی مختلف
+		\item شامل جفت‌شدگی فاز-دامنه (\lr{Phase-Amplitude Coupling})
+		\item نشان‌دهنده ارتباط و یکپارچگی بین گروه‌های مختلف نورونی
+		\item نقش مهم در حافظه کاری و فرآیندهای شناختی
+	\end{itemize}
+	
+	\textbf{انواع جفت‌شدگی مورد مطالعه:}
+	\begin{itemize}
+		\item \textbf{\lr{Delta-Alpha}:} جفت‌شدگی بین امواج دلتا (\lr{1-4 Hz}) و آلفا (\lr{7-13 Hz})
+		\item \textbf{\lr{Delta-Gamma}:} جفت‌شدگی بین دلتا و گاما (\lr{30-49 Hz})
+		\item \textbf{\lr{Theta-Gamma}:} جفت‌شدگی بین تتا \lr{(4-7 Hz)} و گاما
+		\item \textbf{\lr{Alpha-Gamma}:} جفت‌شدگی بین آلفا و گاما
+		\item \textbf{\lr{Beta-Gamma}:} جفت‌شدگی بین بتا (\lr{13-30 Hz}) و گاما
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=0.8]
+			% Time axis
+			\draw[thick, ->] (0,0) -- (10,0) node[right] {زمان (s)};
+			\foreach \x/\label in {0/0, 2/1, 4/2, 6/3, 8/4}
+			\draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
+			
+			% Low frequency (theta) wave
+			\draw[blue, thick] (0,2) sin (1,2.5) cos (2,2) sin (3,1.5) cos (4,2) sin (5,2.5) cos (6,2) sin (7,1.5) cos (8,2);
+			\node[blue] at (9,2.2) {Theta \lr{(4-7 Hz)}};
+			
+			% High frequency (gamma) envelope
+			\draw[red, thick] (0,0.5) -- (1,1) -- (2,0.5) -- (3,0.2) -- (4,0.5) -- (5,1) -- (6,0.5) -- (7,0.2) -- (8,0.5);
+			\node[red] at (9,0.7) {Gamma Envelope};
+			
+			% Coupling indication
+			\draw[green, dashed] (1,1) -- (1,2.5);
+			\draw[green, dashed] (5,1) -- (5,2.5);
+			\node[green] at (5.5,1.8) {Coupling};
+			
+		\end{tikzpicture}
+		\caption{نمایش شماتیک جفت‌شدگی فاز-دامنه}
+	\end{figure}
+	
+	\subsection{آزمون آماری توصیه شده}
+	
+	\textbf{تحلیل واریانس یک‌راهه (\lr{One-Way ANOVA})}
+	
+	اگر ANOVA معنادار باشد، باید آزمون‌های تعقیبی (مثل \lr{Tukey's HSD}) انجام داد تا مشخص شود کدام گروه‌های خاص با هم تفاوت دارند.
+	
+	\subsubsection{انتخاب آزمون آماری}
+	
+	\begin{table}[h]
+		\centering
+		\caption{معیارهای انتخاب آزمون}
+		\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+			\hline
+			\textbf{ویژگی} & \textbf{\lr{One-Way ANOVA}} & \textbf{\lr{Kruskal-Wallis}} \\
+			\hline
+			نوع داده & کمّی پیوسته & کمّی یا ترتیبی \\
+			\hline
+			توزیع داده & نرمال در هر گروه & هر نوع توزیعی \\
+			\hline
+			همگنی واریانس & فرض برابری واریانس‌ها & فرض نمی‌کند \\
+			\hline
+			قدرت آماری & بیشتر (اگر فرضیات برقرار باشند) & کمتر اما مقاوم‌تر \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\textbf{در این مطالعه:}
+	\begin{itemize}
+		\item داده‌ها غیرنرمال بودند
+		\item از آزمون Kruskal-Wallis استفاده شد
+		\item آزمون‌های تعقیبی: DSCF (\lr{Dwass Steel Crithlow Fligner})
+	\end{itemize}
+	
+	\subsection{روش اجرای مطالعه}
+	
+	\subsubsection{شرکت‌کنندگان}
+	\begin{itemize}
+		\item جمعاً ۱۳۲ نفر در سه گروه
+		\item معیارهای تشخیصی استاندارد NIA-AA برای AD
+		\item معیارهای MCI بر اساس \lr{Albert et al.} (2011)
+		\item همه شرکت‌کنندگان ارزیابی عصب‌روانشناختی کامل داشتند
+	\end{itemize}
+	
+	\subsubsection{ابزارها و روش‌ها}
+	
+	\textbf{ثبت \lr{EEG}:}
+	\begin{itemize}
+		\item سیستم \lr{NeuroScan 64} کاناله
+		\item استاندارد بین‌المللی \lr{10}-\lr{20}
+		\item نرخ نمونه‌برداری: \lr{1000} هرتز
+		\item فیلتر:\lr{49-0.5} هرتز
+		\item مدت ثبت: ۶ دقیقه با چشمان بسته
+	\end{itemize}
+	
+	\textbf{ارزیابی‌های شناختی:}
+	\begin{itemize}
+		\item MMSE (\lr{Mini-Mental State Examination})
+		\item HVLT-R (\lr{Hopkins Verbal Learning Test-Revised})
+		\item آزمون حافظه منطقی (\lr{Wechsler})
+		\item آزمون نام‌گذاری بوستون
+		\item آزمون عملکرد اجرایی (\lr{STT-A, STT-B})
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=1]
+			% EEG electrode positions (simplified 10-20 system)
+			\draw[thick] (0,0) circle (3);
+			
+			% Electrodes
+			\foreach \angle/\label in {90/Fz, 45/F4, 135/F3, 0/Cz, -45/P4, -135/P3, -90/Oz}
+			{
+				\fill (\angle:3) circle (0.08);
+				\node at (\angle:3.5) {\label};
+			}
+			
+			% Brain regions
+			\node at (0,2) {\small پیشانی};
+			\node at (0,0) {\small مرکزی};
+			\node at (0,-2) {\small آهیانه‌ای};
+			
+			% Regional groupings
+			\draw[red, dashed] (-2,1.5) rectangle (2,3.2);
+			\node[red] at (0,4.5) {\small \rl{نواحی پیشانی}};
+			
+			\draw[blue, dashed] (-2,-1.5) rectangle (2,-3.2);
+			\node[blue] at (0,-4.5) {\small \rl{نواحی آهیانه‌ای}};
+			
+		\end{tikzpicture}
+		\caption{سیستم الکترود ۱۰-۲۰ و تقسیم‌بندی نواحی مغزی}
+	\end{figure}
+	
+	\subsection{تجزیه و تحلیل داده‌ها}
+	
+	\subsubsection{پیش‌پردازش EEG}
+	
+	\textbf{مراحل پردازش در \lr{MATLAB EEGLAB}:}
+	\begin{itemize}
+		\item حذف کانال‌های اضافی
+		\item فیلتر پاس‌باند ۰.۵-۴۹ هرتز
+		\item تصحیح baseline
+		\item جایگذاری کانال‌های بد و حذف بخش‌های آلوده
+		\item ICA برای حذف artifacts چشم و ماهیچه
+		\item بازرسی بصری و حذف segments باقی‌مانده
+		\item تقسیم داده به segments ۲ ثانیه‌ای
+	\end{itemize}
+	
+	\subsubsection{محاسبه شاخص تعدیل (\lr{Modulation Index})}
+	
+	\textbf{روش MI (\lr{Tort et al., 2008}):}
+	
+	برای هر الکترود، MI بین فاز فرکانس پایین و دامنه فرکانس بالا محاسبه شد:
+	
+	$$MI = \frac{\log(N) - H}{log(N)}$$
+	
+	که در آن:
+	$$H = -\sum_{j=1}^{N} p(j) \log p(j)$$
+	
+	و $p(j)$ دامنه نرمال‌شده در \lr{j}-امین بازه فازی است.
+	
+	\textbf{باندهای فرکانسی:}
+	\begin{itemize}
+		\item دلتا: ۱-۴ هرتز
+		\item تتا: ۴-۷ هرتز
+		\item آلفا: ۷-۱۳ هرتز
+		\item بتا: ۱۳-۳۰ هرتز
+		\item گاما: ۳۰-۴۹ هرتز
+	\end{itemize}
+	
+	\subsubsection{تحلیل آماری}
+	
+	\textbf{تحلیل سطح کلی:}
+	\begin{itemize}
+		\item میانگین‌گیری جفت‌شدگی در تمام الکترودها
+		\item آزمون Kruskal-Wallis برای مقایسه سه گروه
+		\item آزمون تعقیبی DSCF در صورت معناداری
+	\end{itemize}
+	
+	\textbf{تحلیل نواحی مغزی:}
+	\begin{itemize}
+		\item تقسیم‌بندی به ۸ ناحیه: پیشانی چپ/راست، گیجگاهی، آهیانه‌ای، پس‌سری
+		\item تصحیح FDR (\lr{False Discovery Rate}) برای مقایسات چندگانه
+		\item آزمون‌های تعقیبی برای جفت‌شدگی‌های معنادار
+	\end{itemize}
+	
+	\section{نتایج مطالعه}
+	
+	\subsection{تحلیل طیف توان}
+	
+	\begin{table}[h]
+		\centering
+		\caption{مقایسه توان نسبی باندهای فرکانسی}
+		\begin{tabular}{lcccc}
+			\toprule
+			\textbf{باند فرکانسی} & \textbf{HC} & \textbf{MCI} & \textbf{AD} & \textbf{p-value} \\
+			\midrule
+			دلتا (\lr{1-4 Hz}) & \lr{0.18 }± \lr{0.05 }& \lr{0.19 }± \lr{0.06} & \lr{0.22 }± \lr{0.07 }& \lr{0.087 }\\
+			تتا (\lr{4-7 Hz}) & \lr{0.15 }± \lr{0.04 }& \lr{0.16} ± \lr{0.04} & \lr{0.19} ± \lr{0.05} & \lr{0.006}* \\
+			آلفا (\lr{7-13 Hz}) & \lr{0.32 }± \lr{0.08 }& \lr{0.31 }± 0\lr{.07 }& \lr{0.29 }± \lr{0.08} & \lr{0.234 }\\
+			بتا (\lr{13-30 Hz}) & \lr{0.25 }± \lr{0.06} & \lr{0.24} ± \lr{0.05} & \lr{0.23} ± \lr{0.06} & \lr{0.456} \\
+			گاما (\lr{30-49 Hz}) & \lr{0.10 }± \lr{0.03} & \lr{0.10 }± \lr{0.03 }& \lr{0.07 }± \lr{0.02 }& \lr{<0.001}* \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\textbf{یافته‌ها:}
+	\begin{itemize}
+		\item افزایش معنادار توان تتا در گروه AD نسبت به HC و MCI
+		\item کاهش معنادار توان گاما در گروه AD نسبت به سایر گروه‌ها
+	\end{itemize}
+	
+	\subsection{تحلیل جفت‌شدگی سطح کلی}
+	
+	\textbf{فرضیه‌ها:}
+	\begin{itemize}
+		\item $H_0$: میانگین شدت جفت‌شدگی در هر سه گروه برابر است
+		\item $H_1$: حداقل یکی از میانگین‌های گروه‌ها متفاوت است
+	\end{itemize}
+	
+	\textbf{آزمون آماری:} Kruskal-Wallis با تصحیح DSCF
+	
+	\begin{table}[h]
+		\centering
+		\caption{نتایج جفت‌شدگی سطح کلی}
+		\begin{tabular}{lcccc}
+			\toprule
+			\textbf{نوع جفت‌شدگی} & \textbf{H-statistic} & \textbf{p-value} & \textbf{اندازه اثر} & \textbf{مقایسات معنادار} \\
+			\midrule
+			\lr{Delta-Alpha} & \lr{15.8} & \lr{<0.001} & \lr{0.12} & \lr{AD > HC, MCI} \\
+			\lr{Delta-Gamma} & \lr{11.4} & \lr{0.003} & \lr{0.08} & \lr{AD > HC, MCI} \\
+			\lr{Theta-Gamma} & \lr{7.1} & \lr{0.024} & \lr{0.05} & \lr{AD > HC} \\
+			\lr{Alpha-Gamma} & \lr{18.9} & \lr{<0.001} & \lr{0.14} & \lr{AD > HC, MCI} \\
+			\lr{Beta-Gamma} & \lr{20.3} & \lr{<0.001} & \lr{0.15} & \lr{AD > HC, MCI }\\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=0.8]
+			% Bar chart for coupling strengths
+			\draw[thick, ->] (0,0) -- (0,6) node[above] {\rl{شدت جفت‌شدگی}};
+			\draw[thick, ->] (0,0) -- (10,0) node[right] {\rl{نوع جفت‌شدگی}};
+			
+			% X-axis labels
+			\foreach \x/\label in {1.5/D-A, 3/D-G, 4.5/T-G, 6/A-G, 7.5/B-G}
+			\node[rotate=45] at (\x,-0.8) {\label};
+			
+			% Bars for each group
+			% HC (blue)
+			\fill[blue!30] (1,0) rectangle (1.3,2.1);
+			\fill[blue!30] (2.5,0) rectangle (2.8,1.8);
+			\fill[blue!30] (4,0) rectangle (4.3,1.5);
+			\fill[blue!30] (5.5,0) rectangle (5.8,2.0);
+			\fill[blue!30] (7,0) rectangle (7.3,1.9);
+			
+			% MCI (green)
+			\fill[green!30] (1.3,0) rectangle (1.6,2.3);
+			\fill[green!30] (2.8,0) rectangle (3.1,2.0);
+			\fill[green!30] (4.3,0) rectangle (4.6,1.7);
+			\fill[green!30] (5.8,0) rectangle (6.1,2.2);
+			\fill[green!30] (7.3,0) rectangle (7.6,2.1);
+			
+			% AD (red)
+			\fill[red!30] (1.6,0) rectangle (1.9,3.8);
+			\fill[red!30] (3.1,0) rectangle (3.4,3.2);
+			\fill[red!30] (4.6,0) rectangle (4.9,2.5);
+			\fill[red!30] (6.1,0) rectangle (6.4,3.9);
+			\fill[red!30] (7.6,0) rectangle (7.9,4.1);
+			
+			% Significance stars
+			\node at (1.7,4.2) {***};
+			\node at (3.2,3.6) {**};
+			\node at (4.7,2.9) {*};
+			\node at (6.2,4.3) {***};
+			\node at (7.7,4.5) {***};
+			
+			% Legend
+			\fill[blue!30] (8.5,5) rectangle (8.8,5.3);
+			\node[right] at (8.9,5.15) {HC};
+			\fill[green!30] (8.5,4.5) rectangle (8.8,4.8);
+			\node[right] at (8.9,4.65) {MCI};
+			\fill[red!30] (8.5,4) rectangle (8.8,4.3);
+			\node[right] at (8.9,4.15) {AD};
+			
+		\end{tikzpicture}
+		\caption{مقایسه شدت جفت‌شدگی بین سه گروه (\lr{*p<0.05, **p<0.01, ***p<0.001})}
+	\end{figure}
+	
+	\subsection{تحلیل نواحی مغزی}
+	
+	\textbf{یافته‌های مهم:}
+	\begin{itemize}
+		\item تفاوت‌های گسترده بین HC و AD در چندین جفت‌شدگی و نواحی مختلف
+		\item تفاوت‌های محدود بین HC و MCI: فقط در delta-gamma و theta-gamma گیجگاهی راست
+		\item theta-gamma گیجگاه راست: الگوی پیشرونده \lr{HC < MCI < AD}
+	\end{itemize}
+	
+	\begin{table}[h]
+		\centering
+		\caption{جفت‌شدگی theta-gamma در نواحی مختلف}
+		\begin{tabular}{lccccc}
+			\toprule
+			\textbf{ناحیه} & \textbf{HC} & \textbf{MCI} & \textbf{AD} & \textbf{p-value} & \textbf{مقایسات} \\
+			\midrule
+			گیجگاه راست & \lr{0.012} ± \lr{0.004} & \lr{0.018} ± \lr{0.006} & \lr{0.025} ± \lr{0.008} & \lr{0.003} & \lr{HC<MCI<AD} \\
+			آهیانه‌ای راست & \lr{0.015} ± \lr{0.005} & \lr{0.022} ± \lr{0.007} & \lr{0.028} ± \lr{0.009} & \lr{0.005} & \lr{HC<AD, MCI<AD }\\
+			پیشانی چپ & \lr{0.011} ± \lr{0.003} & \lr{0.013} ± \lr{0.004} & \lr{0.019} ± \lr{0.006} & \lr{0.021} & \lr{HC<AD }\\
+			پیشانی راست & \lr{0.010} ± \lr{0.003} & \lr{0.012} ± \lr{0.004} & \lr{0.017} ± \lr{0.005} & \lr{0.035} & \lr{HC<AD }\\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\subsection{ارتباط با عملکرد شناختی}
+	
+	\textbf{همبستگی اسپیرمن بین جفت‌شدگی و نمرات شناختی:}
+	
+	\begin{itemize}
+		\item همبستگی منفی ضعیف با نمرات MMSE
+		\item بیشترین همبستگی‌ها با حوزه عملکرد حافظه (۲۶.۴۲٪)
+		\item همبستگی‌های معنادار با آزمون‌های حافظه فوری و تأخیری
+		\item ارتباط با عملکرد زبانی و حافظه فضایی-بصری
+	\end{itemize}
+	
+	\section{تفسیر نتایج}
+	
+	\subsection{یافته‌های اصلی}
+	
+	\textbf{رد فرضیه صفر:}
+	فرضیه صفر در پنج نوع جفت‌شدگی مختلف رد شد. گروه‌ها تفاوت‌های معناداری در شدت جفت‌شدگی نشان دادند.
+	
+	\textbf{الگوی تغییرات:}
+	\begin{itemize}
+		\item \textbf{سطح کلی:} AD > HC در تمام جفت‌شدگی‌های معنادار
+		\item \textbf{تدریجی:} فقط theta-gamma گیجگاه راست الگوی HC < MCI < AD نشان داد
+		\item \textbf{ناحیه‌ای:} تغییرات بیشتر در نواحی گیجگاهی و آهیانه‌ای راست
+	\end{itemize}
+	
+	\subsection{تفسیر علمی}
+	
+	\textbf{افزایش جفت‌شدگی در AD:}
+	\begin{itemize}
+		\item نشان‌دهنده نیاز به منابع عصبی بیشتر برای حفظ عملکرد
+		\item مکانیسم جبرانی در برابر تغییرات پاتولوژیک
+		\item اختلال در عملکرد نورون‌های GABAergic
+	\end{itemize}
+	
+	\textbf{اهمیت theta-gamma coupling:}
+	\begin{itemize}
+		\item مرتبط با حافظه کاری و فرآیندهای شناختی
+		\item الگوی پیشرونده نشان‌دهنده تدریجی بودن تغییرات
+		\item پتانسیل به عنوان biomarker تشخیصی
+	\end{itemize}
+	
+	\section{آزمون‌های تعقیبی}
+	
+	\subsection{مقایسات دوبه‌دو}
+	
+	پس از یافتن تفاوت معنادار در Kruskal-Wallis، آزمون‌های تعقیبی DSCF انجام شد:
+	
+	\textbf{Delta-Alpha coupling:}
+	\begin{itemize}
+		\item \lr{AD vs HC: p < 0.001}
+		\item \lr{AD vs MCI: p = 0.030}
+		\item \lr{MCI vs HC: p = 0.412} (غیرمعنادار)
+	\end{itemize}
+	
+	\textbf{Alpha-Gamma coupling:}
+	\begin{itemize}
+		\item \lr{AD vs HC: p < 0.001}
+		\item \lr{AD vs MCI: p = 0.002}
+		\item \lr{MCI vs HC: p = 0.089} (غیرمعنادار)
+	\end{itemize}
+	
+	\textbf{Beta-Gamma coupling:}
+	\begin{itemize}
+		\item \lr{AD vs HC: p < 0.001}
+		\item \lr{AD vs MCI: p = 0.001}
+		\item \lr{MCI vs HC: p = 0.156} (غیرمعنادار)
+	\end{itemize}
+	
+	\section{محدودیت‌ها و ملاحظات}
+	
+	\subsection{محدودیت‌های روش‌شناختی}
+	
+	\begin{itemize}
+		\item \textbf{طرح مقطعی:} عدم امکان بررسی تغییرات طولی
+		\item \textbf{ناهمگنی MCI:} همه بیماران MCI لزوماً به AD تبدیل نمی‌شوند
+		\item \textbf{عدم تست پاتولوژیک:} عدم تأیید پاتولوژی AD در MCI
+		\item \textbf{حجم نمونه:} نمونه نسبتاً کوچک در هر گروه
+	\end{itemize}
+	
+	\subsection{ملاحظات آماری}
+	
+	\begin{itemize}
+		\item \textbf{مقایسات چندگانه:} استفاده از تصحیح FDR
+		\item \textbf{توزیع غیرنرمال:} استفاده از آزمون‌های ناپارامتریک
+		\item \textbf{همبستگی‌های بالا:} جفت‌شدگی‌ها با هم همبسته هستند
+		\item \textbf{اندازه اثر:} اندازه اثرهای کوچک تا متوسط
+	\end{itemize}
+	
+	\subsection{فرضیات One-Way ANOVA/Kruskal-Wallis}
+	
+	\textbf{فرضیات برقرار شده:}
+	\begin{itemize}
+		\item استقلال مشاهدات: هر فرد فقط در یک گروه
+		\item متغیر وابسته پیوسته: شدت جفت‌شدگی
+		\item گروه‌های مستقل: سه گروه جداگانه
+	\end{itemize}
+	
+	\textbf{فرضیات نقض شده:}
+	\begin{itemize}
+		\item نرمال بودن: داده‌ها غیرنرمال بودند (حل شد با \lr{Kruskal-Wallis})
+		\item همگنی واریانس: واریانس‌ها متفاوت بودند (مقاوم با آزمون ناپارامتریک)
+	\end{itemize}
+	
+	\section{کاربردهای بالینی}
+	
+	\subsection{تشخیص زودهنگام}
+	
+	\begin{itemize}
+		\item theta-gamma coupling به عنوان biomarker احتمالی
+		\item تشخیص تفاوت بین MCI و AD
+		\item پیش‌بینی پیشرفت از MCI به AD
+		\item ارزیابی مستقل از آزمون‌های شناختی
+	\end{itemize}
+	
+	\subsection{پیگیری درمان}
+	
+	\begin{itemize}
+		\item ارزیابی اثربخشی مداخلات شناختی
+		\item پیگیری تغییرات عصبی در طول زمان
+		\item تنظیم درمان بر اساس الگوهای جفت‌شدگی
+		\item ارزیابی پاسخ به داروهای ضدآلزایمر
+	\end{itemize}
+	
+	\section{مقایسه با مطالعات مشابه}
+	
+	\subsection{تحلیل‌های پیشرفته}
+	
+	\begin{itemize}
+		\item \textbf{جفت‌شدگی بین نواحی:} cross-regional coupling
+		\item \textbf{جهت‌داری جفت‌شدگی:} directional coupling analysis
+		\item \textbf{یکپارچه‌سازی با fMRI:} simultaneous EEG-fMRI
+		\item \textbf{تحریک مغزی:} اثر tACS بر جفت‌شدگی
+	\end{itemize}
+	
+	\section{نتیجه‌گیری}
+	
+	این مطالعه نمونه عالی از \textbf{تحلیل واریانس یک‌راهه} در تحقیقات عصب‌روانشناسی است که در آن:
+	
+	\begin{itemize}
+		\item سه گروه مستقل (\lr{HC، MCI، AD}) مقایسه شدند
+		\item از آزمون Kruskal-Wallis برای داده‌های غیرنرمال استفاده شد
+		\item آزمون‌های تعقیبی DSCF برای مشخص کردن تفاوت‌های گروهی انجام شد
+		\item تصحیح FDR برای کنترل نرخ خطای کاذب
+	\end{itemize}
+	
+	\textbf{یافته‌های کلیدی:}
+	\begin{itemize}
+		\item جفت‌شدگی متقاطع فرکانسی در AD نسبت به HC و MCI افزایش یافته
+		\item theta-gamma coupling در گیجگاه راست الگوی پیشرونده نشان داد
+		\item همبستگی معنادار با عملکرد شناختی، خصوصاً حافظه
+		\item پتانسیل بالا به عنوان biomarker تشخیصی
+	\end{itemize}
+	
+	\textbf{اهمیت روش‌شناختی:}
+	\begin{itemize}
+		\item کاربرد صحیح آزمون‌های ناپارامتریک برای داده‌های غیرنرمال
+		\item تصحیح مناسب برای مقایسات چندگانه
+		\item استفاده از آزمون‌های تعقیبی مقاوم
+		\item تأکید بر اهمیت اندازه اثر علاوه بر معناداری
+	\end{itemize}
+	
+	\textbf{کاربردهای بالینی:}
+	\begin{itemize}
+		\item توسعه ابزارهای تشخیصی غیرتهاجمی
+		\item تشخیص زودهنگام تغییرات شناختی
+		\item پیگیری پیشرفت بیماری
+		\item ارزیابی اثربخشی مداخلات درمانی
+	\end{itemize}
+	
+	\section{فرمول‌های آماری}
+	
+	\subsection{آزمون Kruskal-Wallis}
+	
+	\begin{equation}
+			H = \frac{12}{N(N+1)} \sum_{i=1}^{k} \frac{R_i^2}{n_i} - 3(N+1)		
+	\end{equation}
+	که در آن:
+	\begin{itemize}
+		\item $N$: تعداد کل مشاهدات
+		\item $k$: تعداد گروه‌ها (\lr{k=3})
+		\item $R_i$: مجموع رتبه‌های گروه $i$ام
+		\item $n_i$: تعداد مشاهدات در گروه $i$ام
+	\end{itemize}
+	
+	\subsection{شاخص تعدیل (MI)}
+	
+	\begin{equation}
+		MI = \frac{\log(N) - H}{\log(N)}
+	\end{equation}
+	
+	\begin{equation}
+		H = -\sum_{j=1}^{N} p(j) \log p(j)
+	\end{equation}
+	
+	که در آن:
+	\begin{itemize}
+		\item $N$: تعداد بازه‌های فازی (\lr{N=18})
+		\item $p(j)$: دامنه نرمال‌شده در بازه $j$ام
+		\item $H$: آنتروپی Shannon
+	\end{itemize}
+	
+	\subsection{اندازه اثر}
+	
+	برای آزمون Kruskal-Wallis:
+	
+	\begin{equation}
+		\eta^2 = \frac{H - k + 1}{N - k}
+	\end{equation}
+	
+	راهنمای تفسیر:
+	\begin{itemize}
+		\item کوچک: $\eta^2 = 0.01$
+		\item متوسط: $\eta^2 = 0.06$
+		\item بزرگ: $\eta^2 = 0.14$
+	\end{itemize}
+	
+	\section{مراجع}
+	
+	\begin{latin}
+		\begin{enumerate}
+			\item Chen, X., Li, Y., Li, R., Yuan, X., Liu, M., Zhang, W., \& Li, Y. (2023). Multiple cross-frequency coupling analysis of resting-state EEG in patients with mild cognitive impairment and Alzheimer's disease. \textit{Frontiers in Aging Neuroscience}, 15, 1142085. \\
+			Available at: \url{https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2023.1142085/full}
+			
+			\item Tort, A. B., Komorowski, R., Eichenbaum, H., \& Kopell, N. (2010). Measuring phase-amplitude coupling between neuronal oscillations of different frequencies. \textit{Journal of Neurophysiology}, 104(2), 1195-1210.
+			
+			\item Albert, M. S., et al. (2011). The diagnosis of mild cognitive impairment due to Alzheimer's disease: Recommendations from the National Institute on Aging-Alzheimer's Association workgroups. \textit{Alzheimer's \& Dementia}, 7(3), 270-279.
+			
+			\item McKhann, G. M., et al. (2011). The diagnosis of dementia due to Alzheimer's disease: Recommendations from the National Institute on Aging-Alzheimer's Association workgroups. \textit{Alzheimer's \& Dementia}, 7(3), 263-269.
+		\end{enumerate}
+	\end{latin}
+	
+\end{document}

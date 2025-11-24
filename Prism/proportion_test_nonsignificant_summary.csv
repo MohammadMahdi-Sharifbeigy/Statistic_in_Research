@@ -1,0 +1,3 @@
+Group,Total,Success,Failure,Success_Rate
+Control,120,56,64,0.4666666666666667
+Treatment,120,61,59,0.5083333333333333

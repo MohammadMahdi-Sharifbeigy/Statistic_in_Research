@@ -1,0 +1,380 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{subcaption}
+\geometry{margin=2.5cm}
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+
+\begin{document}
+	
+	\title{سناریو ۲: یک گروه، دو یا چند نقطه زمانی/شرایط\\مطالعه EEG کمی در بیماران پارکینسون تحت درمان DBS}
+	\author{محمدمهدی شریف بیگی}
+	\maketitle
+	
+	\tableofcontents
+	\newpage
+	
+	\section{مقدمه}
+	
+	\subsection{سوال پژوهشی اصلی}
+	
+	آیا الکتروانسفالوگرافی کمی (qEEG) پیش از جراحی می‌تواند تغییرات شناختی پس از تحریک عمیق مغز (DBS) در بیماران پارکینسون را پیش‌بینی کند؟
+	
+	\subsection{اهمیت موضوع}
+	
+	بیماری پارکینسون یک اختلال تخریبی عصبی پیش‌رونده است که علاوه بر علائم حرکتی، با اختلالات شناختی همراه است. تحریک عمیق مغز (DBS) درمان مؤثری برای علائم حرکتی محسوب می‌شود، اما خطر تخریب شناختی پس از جراحی نگرانی اصلی است.
+	
+	\section{روش‌شناسی}
+	
+	\subsection{طرح مطالعه: سناریو ۲ - طراحی تکرار اندازه‌گیری}
+	
+	این مطالعه نمونه‌ای کامل از \textbf{سناریو ۲} است :
+	
+	\begin{itemize}
+		\item \textbf{یک گروه:} ۱۶ بیمار پارکینسون کاندید \lr{DBS}
+		\item \textbf{دو نقطه زمانی:} پیش از جراحی (خط پایه) و ۲۴ ماه پس از جراحی
+		\item \textbf{طراحی درون‌آزمودنی:} هر بیمار به عنوان کنترل خود عمل می‌کند
+		\item \textbf{آزمون آماری:} \lr{t} نمونه‌های جفت و تحلیل واریانس تکرار اندازه‌گیری
+	\end{itemize}
+	
+	\subsection{فرضیه‌ها}
+	
+	$H_0$: میانگین نمرات شناختی و قدرت نسبی EEG قبل و بعد از DBS برابر است.\\
+	$H_1$: میانگین نمرات شناختی و قدرت نسبی EEG قبل و بعد از DBS متفاوت است.
+	
+	\subsection{آزمون آماری}
+	\begin{itemize}
+		\item آزمون t نمونه‌های جفت (\lr{Paired Samples t-test})
+		\item تحلیل واریانس اندازه‌گیری‌های مکرر (\lr{Repeated Measures ANOVA})
+		\item تحلیل همبستگی اسپیرمن (\lr{Spearman Correlation})
+		\item رگرسیون خطی با حذف تدریجی (\lr{Stepwise Linear Regression})
+	\end{itemize}
+	
+		\subsection{شرکت‌کنندگان}
+	
+	\begin{table}[H]
+		\centering
+		\caption{ویژگی‌های جمعیت‌شناختی بیماران پارکینسون}
+		\begin{latin}
+			\begin{tabular}{lcc}
+				\toprule
+				\multirow{2}{*}{Characteristic} & DBS Group & Control Group \\
+				& (n=16) & (n=15) \\
+				\midrule
+				Age (years) & $66 (63, 68.5)$ & $64 (63, 68.5)$ \\
+				Gender (female) & 5 & 4 \\
+				Education (years) & $14 (12, 16.5)$ & $14 (12, 17)$ \\
+				MMSE & $28 (28, 29.5)$ & $29 (28.5, 30)$ \\
+				Disease duration (years) & $8.5 (3.5, 13.5)$ & $6 (4, 9)$ \\
+				LED (mg/day) & $709.5 (442.75, 1560)$ & $653 (477.5, 760)$ \\
+				UPDRS-III & $17 (7.75, 20.25)$ & $13 (10, 19.5)$ \\
+				Follow-up (months) & $24.50 (16.50, 40)$ & $24 (23, 25.5)$ \\
+				\bottomrule
+			\end{tabular}
+		\end{latin}
+		\vspace{3mm}
+		
+		مقادیر به صورت میانه و دامنه میان‌چارکی ارائه شده‌اند. تمام مقایسه‌ها غیرمعنادار بودند (\lr{p > 0.05}).
+	\end{table}
+	
+	\subsection{نتایج}
+	
+	\subsubsection{مقایسه دو نقطه زمانی}
+	\textbf{روانی کلامی:} خط پایه = $-0.20$، پیگیری = $-0.68$، تغییر = $-0.42$، $p < 0.05$
+	
+	\textbf{شناخت کلی:} خط پایه = $-0.28$، پیگیری = $-0.41$، تغییر = $-0.18$، $p = 0.06$ (روند)
+	
+	\textbf{توجه:} خط پایه = $-0.55$، پیگیری = $-1.11$، تغییر = $-0.39$، $p = 0.005$
+	
+	\subsubsection{همبستگی EEG و شناخت}
+	\textbf{دلتا - شناخت کلی:} $r = -0.74$، $p < 0.01$
+	
+	\textbf{آلفا ۱ - عملکرد اجرایی:} $r = +0.82$، $p < 0.01$
+	
+	\textbf{دلتا - توجه:} $r = -0.52$، $p < 0.05$
+	
+	\subsubsection{پیش‌بینی}
+	مدل رگرسیون خطی: قدرت دلتا <- شناخت کلی
+	
+	$R^2_{\text{adjusted}} = 0.6341$، $p = 0.00409$
+	
+	\subsection{تفسیر}
+	فرض صفر برای روانی کلامی و توجه رد شد. قدرت نسبی دلتا در EEG پیش از جراحی، ۶۳٪ از واریانس تغییرات شناختی پس از DBS را پیش‌بینی می‌کند. این یافته نشان‌دهنده اهمیت qEEG به‌عنوان ابزار غربالگری برای شناسایی بیماران مستعد اختلال شناختی است.
+	\subsection{تعریف قدرت نسبی EEG}
+	
+	\textbf{قدرت نسبی EEG (\lr{Relative Power})} سهم هر باند فرکانسی از کل قدرت طیف EEG است:
+	
+	$$\text{Relative Power}_{\text{band}} = \frac{\text{Absolute Power}_{\text{band}}}{\sum_{\text{all bands}} \text{Absolute Power}} \times 100\%$$
+	
+	\subsection{باندهای فرکانسی مورد تحلیل}
+	
+	\begin{itemize}
+		\item \textbf{دلتا (۱-۴ هرتز):} مرتبط با خواب عمیق و حالات پاتولوژیک
+		\item \textbf{تتا (۴-۸ هرتز):} کاهش هوشیاری و حالات درونی
+		\item \textbf{آلفا ۱ (۸-۱۰ هرتز):} فعالیت ایده‌آل آرامش و هماهنگی
+		\item \textbf{آلفا ۲ (۱۰-۱۳ هرتز):} فعالیت شناختی پایه
+		\item \textbf{بتا (۱۳-۳۰ هرتز):} توجه فعال و پردازش شناختی
+	\end{itemize}
+	
+	\section{نتایج اصلی}
+	
+	\subsection{تغییرات شناختی طولی}
+	
+	\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{verbal_fluency_changes.png}
+		\caption{روانی کلامی}
+		\label{fig:verbal_fluency}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{executive_function_changes.png}
+		\caption{عملکرد اجرایی}
+		\label{fig:executive_function}
+	\end{subfigure}
+	
+	\vspace{0.5cm}
+	
+	\begin{subfigure}{0.45\textwidth}
+		\includegraphics[width=\textwidth]{attention_changes.png}
+		\caption{توجه}
+		\label{fig:attention}
+	\end{subfigure}
+	\caption{\lr{Z-scores} تصحیح شده برای سن، جنس و تحصیلات در حیطه‌های شناختی مختلف طی ۲ سال پیگیری. (a) روانی کلامی: کاهش معنادار در گروه DBS نسبت به کنترل (\lr{p < 0.05}) - تنها حیطه‌ای با تفاوت معنادار بین گروهی. (b) عملکرد اجرایی: کاهش در هر دو گروه با روند بیشتر در گروه DBS. (c) توجه: کاهش معنادار در هر دو گروه (\lr{p = 0.005}) بدون تفاوت بین گروهی. خطوط نارنجی: گروه DBS، خطوط آبی: گروه کنترل بدون DBS.}
+	\label{fig:cognitive_changes}
+\end{figure}
+	
+	یافته کلیدی این مطالعه \textbf{کاهش معنادار روانی کلامی} در گروه DBS بود که منحصراً به جراحی نسبت داده شد. این کاهش در ۲ سال پیگیری پایدار ماند و مهم‌ترین عارضه شناختی DBS محسوب می‌شود.
+	
+	\subsection{جدول کامل تغییرات شناختی}
+	
+	\begin{table}[H]
+		\centering
+		\caption{تحلیل کامل تغییرات شناختی در بیماران DBS}
+		\begin{latin}
+			\begin{tabular}{lcccc}
+				\toprule
+				\multirow{2}{*}{Domain} & \multicolumn{2}{c}{Median Z-scores (IQR)} & \multirow{2}{*}{Change Score} & \multirow{2}{*}{p-value} \\
+				\cmidrule(lr){2-3}
+				& Baseline & Follow-up & & \\
+				\midrule
+				Overall cognitive & $-0.28$ & $-0.41$ & $-0.18$ & ns \\
+				& $(-0.55, -0.12)$ & $(-1.00, -0.05)$ & $(-0.50, 0.21)$ & \\
+				\midrule
+				Attention & $-0.55$ & $-1.11$ & $-0.39$ & ns \\
+				& $(-0.85, -0.21)$ & $(-1.92, -0.65)$ & $(-0.77, -0.08)$ & \\
+				\midrule
+				Executive function & $-0.51$ & $-0.76$ & $-0.26$ & ns \\
+				& $(-0.96, 0.02)$ & $(-1.16, -0.33)$ & $(-0.80, 0.14)$ & \\
+				\midrule
+				Memory & $-0.19$ & $0.03$ & $0.06$ & ns \\
+				& $(-0.47, 0.05)$ & $(-0.38, 0.49)$ & $(-0.44, 0.77)$ & \\
+				\midrule
+				\textbf{Verbal fluency} & $-0.20$ & $-0.68$ & $-0.42$ & \textbf{< 0.05} \\
+				& $(-0.48, 0.44)$ & $(-1.13, -0.02)$ & $(-1.47, 0.02)$ & \\
+				\midrule
+				Visuoconstruction & $-0.99$ & $0.44$ & $0.02$ & ns \\
+				& $(-1.53, 0.67)$ & $(-0.09, 1.00)$ & $(-0.81, 0.13)$ & \\
+				\bottomrule
+			\end{tabular}
+		\end{latin}
+	\end{table}
+	
+	\section{همبستگی EEG و شناخت}
+	
+	\subsection{ارتباط امواج کند با اختلال شناختی}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.32\textwidth}
+			\includegraphics[width=\textwidth]{delta_overall_correlation.png}
+			\caption{شناخت کلی}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+			\includegraphics[width=\textwidth]{delta_attention_correlation.png}
+			\caption{توجه}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+			\includegraphics[width=\textwidth]{delta_executive_correlation.png}
+			\caption{عملکرد اجرایی}
+		\end{subfigure}
+		\caption{همبستگی منفی قدرت نسبی دلتا در خط پایه با عملکرد شناختی پس از DBS. (a) برای شناخت کلی. (b) برای توجه. (c)  برای عملکرد اجرایی. افزایش امواج دلتا نشان‌دهنده آسیب‌پذیری شناختی است.}
+		\label{fig:delta_correlations}
+	\end{figure}
+	
+	\subsection{ارتباط مثبت امواج آلفا با حفظ شناخت}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.32\textwidth}
+			\includegraphics[width=\textwidth]{alpha_overall_correlation.png}
+			\caption{شناخت کلی}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+			\includegraphics[width=\textwidth]{alpha_attention_correlation.png}
+			\caption{توجه}
+		\end{subfigure}
+		\begin{subfigure}{0.32\textwidth}
+			\includegraphics[width=\textwidth]{alpha_executive_correlation.png}
+			\caption{عملکرد اجرایی}
+		\end{subfigure}
+		\caption{همبستگی مثبت قدرت نسبی آلفا (۸-۱۰ هرتز) با حفظ عملکرد شناختی. (a) برای شناخت کلی. (b)  برای توجه. (c)  برای عملکرد اجرایی. امواج آلفا نشان‌دهنده یکپارچگی عصبی سالم است.}
+		\label{fig:alpha_correlations}
+	\end{figure}
+	
+	\subsection{خلاصه همبستگی‌ها}
+	
+	\begin{table}[H]
+		\centering
+		\caption{ماتریس همبستگی کامل EEG پیش از جراحی و شناخت پس از جراحی}
+		\begin{latin}
+			\begin{tabular}{lccccc}
+				\toprule
+				\multirow{2}{*}{EEG Band} & \multicolumn{5}{c}{Cognitive Domains (Post-operative)} \\
+				\cmidrule(lr){2-6}
+				& Overall & Attention & Executive & Memory & Fluency \\
+				\midrule
+				\textbf{Delta (1-4 Hz)} & & & & & \\
+				Correlation (r) & $-0.74$ & $-0.52$ & $-0.73$ & ns & ns \\
+				p-value & $< 0.01$ & $< 0.05$ & $< 0.01$ & & \\
+				\midrule
+				\textbf{Theta (4-8 Hz)} & & & & & \\
+				Correlation (r) & ns & ns & ns & ns & $-0.50$ \\
+				p-value & & & & & $< 0.05$ \\
+				\midrule
+				\textbf{Alpha 1 (8-10 Hz)} & & & & & \\
+				Correlation (r) & $+0.79$ & $+0.51$ & $+0.82$ & ns & ns \\
+				p-value & $< 0.01$ & $< 0.05$ & $< 0.01$ & & \\
+				\midrule
+				Alpha 2 (10-13 Hz) & ns & ns & ns & ns & ns \\
+				Beta (13-30 Hz) & ns & ns & ns & ns & ns \\
+				\bottomrule
+			\end{tabular}
+		\end{latin}
+		\vspace{3mm}
+		
+		تمام p-valueها با تصحیح FDR محاسبه شده‌اند. ns = غیرمعنادار
+	\end{table}
+	
+	\section{مدل‌سازی پیش‌بینی}
+	
+	\subsection{رگرسیون خطی برای پیش‌بینی شناخت}
+	
+	با استفاده از روش حذف تدریجی متغیرها (\lr{stepwise elimination}):
+	
+	\begin{itemize}
+		\item \textbf{متغیر پیش‌بین نهایی:} قدرت نسبی دلتا
+		\item \textbf{معادله:} $\text{نمره شناخت کلی} = \beta_0 - \beta_1 \times \text{قدرت دلتا}$
+		\item \textbf{ضریب تعیین:} $R^2_{\text{adj}} = 0.6341$
+		\item \textbf{معناداری:} $p = 0.00409$
+	\end{itemize}
+	
+	\textbf{متغیرهای حذف شده:} سن، جنس، سال‌های تحصیل، \lr{MMSE}، \lr{UPDRS III}، مدت بیماری، و \lr{LED}
+	
+	این نتیجه نشان می‌دهد که \textbf{قدرت دلتا به تنهایی ۶۳٪ از واریانس تغییرات شناختی} را توضیح می‌دهد.
+	
+	\section{مکانیزم‌های عصب‌فیزیولوژیکی}
+	
+	\subsection{تفسیر امواج کند}
+	
+	افزایش امواج دلتا و تتا در EEG بیماران پارکینسون نشان‌دهنده:
+	
+	\begin{itemize}
+		\item \textbf{کاهش فعالیت قشری:} تخریب ارتباطات تالامو-قشری
+		\item \textbf{اختلال شبکه‌های توجه:} کاهش یکپارچگی عملکردی
+		\item \textbf{تغییرات نوروترانسمیتری:} کاهش دوپامین و اسیل کولین
+		\item \textbf{آسیب‌پذیری شناختی:} پیش‌بینی‌کننده تخریب آینده
+	\end{itemize}
+	
+	\subsection{نقش امواج آلفا}
+	
+	حفظ امواج آلفا نشان‌دهنده:
+	
+	\begin{itemize}
+		\item \textbf{یکپارچگی عصبی:} ارتباط سالم بین نواحی مغزی
+		\item \textbf{انعطاف‌پذیری شناختی:} توانایی تطبیق با تکالیف جدید
+		\item \textbf{ذخیره شناختی:} مقاومت در برابر آسیب‌های عصبی
+	\end{itemize}
+	
+	\section{کاربردهای بالینی}
+	
+	\subsection{غربالگری پیش از DBS}
+	
+	بر اساس یافته‌های این مطالعه، qEEG می‌تواند:
+	
+	\begin{itemize}
+		\item \textbf{شناسایی بیماران پرخطر:} آن‌هایی با قدرت دلتا بالا
+		\item \textbf{بهبود دقت غربالگری:} مکمل آزمون‌های عصب‌روانشناختی
+		\item \textbf{پیش‌بینی عوارض:} تخمین احتمال کاهش شناختی
+		\item \textbf{تصمیم‌گیری مشترک:} ارائه اطلاعات دقیق به بیمار
+	\end{itemize}
+	
+	\subsection{مزایای qEEG نسبت به آزمون‌های سنتی}
+	
+	\begin{table}[H]
+		\centering
+		\caption{مقایسه qEEG با آزمون‌های عصب‌روانشناختی}
+		\begin{latin}
+			\begin{tabular}{lcc}
+				\toprule
+				Feature & qEEG & Neuropsychological Testing \\
+				\midrule
+				Duration & 15 minutes & 2-4 hours \\
+				Patient cooperation & Minimal & Extensive \\
+				Learning effects & None & Significant \\
+				Repeatability & High & Limited \\
+				Objective measurement & Yes & Subjective \\
+				Language dependency & No & Yes \\
+				Fatigue sensitivity & No & Yes \\
+				Cost & Low & High \\
+				Accessibility & Wide & Limited \\
+				\bottomrule
+			\end{tabular}
+		\end{latin}
+	\end{table}
+	
+	\section{محدودیت‌ها}
+	
+	\subsection{محدودیت‌های مطالعه}
+	
+	\begin{itemize}
+		\item \textbf{حجم نمونه کوچک:} ۱۶ بیمار (قدرت آماری محدود)
+		\item \textbf{پیگیری نسبتاً کوتاه:} ۲۴ ماه (تغییرات بلندمدت نامشخص)
+		\item \textbf{عدم وجود گروه انتظار:} کنترل برای اثرات غیرمرتبط به جراحی
+		\item \textbf{انتخاب الکترودها:} حذف ۱۰ بیمار به دلیل مصنوعات
+	\end{itemize}
+	
+	\section{نتیجه‌گیری}
+	
+	این مطالعه نشان داد که \textbf{qEEG ابزار مفیدی برای پیش‌بینی تغییرات شناختی پس از DBS} است. یافته‌های کلیدی عبارتند از:
+	
+	\begin{enumerate}
+		\item \textbf{کاهش معنادار روانی کلامی} به عنوان اصلی‌ترین عارضه شناختی DBS
+		\item \textbf{همبستگی قوی امواج دلتا} با آسیب‌پذیری شناختی
+		\item \textbf{نقش حفاظتی امواج آلفا} در حفظ عملکرد شناختی
+		\item \textbf{قابلیت پیش‌بینی بالای qEEG} با $R^2 = 0.63$
+	\end{enumerate}
+	
+	\textbf{کاربرد بالینی:} ترکیب qEEG با ارزیابی عصب‌روانشناختی سنتی می‌تواند دقت غربالگری پیش از DBS را افزایش دهد و به شناسایی بیماران آسیب‌پذیر کمک کند.
+	
+	\section*{مراجع}
+	
+	\begin{latin}
+		\begin{itemize}
+			\item Saleh C, Meyer A, Chaturvedi M, Beltrani S, Gschwandtner U, Fuhr P. (2021). Does Quantitative Electroencephalography Refine Preoperative Cognitive Assessment in Parkinson's Disease Patients Treated with Deep Brain Stimulation? A Follow-Up Study. \textit{Dementia and Geriatric Cognitive Disorders}, 50(4), 349--356. doi: \href{https://doi.org/10.1159/000519053}{10.1159/000519053}
+		\end{itemize}
+	\end{latin}
+	
+\end{document}

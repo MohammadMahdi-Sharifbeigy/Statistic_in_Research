@@ -1,0 +1,47 @@
+\contentsline {section}{\numberline {1}چکیده}{3}{section.1}%
+\contentsline {section}{\numberline {2}مقدمه و اهمیت موضوع}{3}{section.2}%
+\contentsline {section}{\numberline {3}بنیان‌های نظری آمار در الکتروفیزیولوژی}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}آمار توصیفی و استنباطی}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}طبقه‌بندی متغیرها در مطالعات الکتروفیزیولوژیکی}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}توزیع‌های احتمالاتی در الکتروفیزیولوژی}{4}{subsection.3.3}%
+\contentsline {section}{\numberline {4}مطالعه تفصیلی مقاله \lr {Grieves (2023)}}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}هدف و ساختار مطالعه}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}روش‌شناسی مطالعه}{4}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}شبیه‌سازی مجموعه داده}{4}{subsubsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.3}روش‌های نقشه‌برداری مورد بررسی}{4}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}هیستوگرام دومتغیره}{4}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}هیستوگرام میانگین‌گیری شده تغییریافته (ASH)}{5}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}هموارسازی تطبیقی}{5}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}درهم‌بندی تطبیقی}{6}{subsubsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.5}برآورد چگالی هسته‌ای (KSDE)}{6}{subsubsection.4.3.5}%
+\contentsline {subsubsection}{\numberline {4.3.6}KSDE زمانی (tKSDE)}{6}{subsubsection.4.3.6}%
+\contentsline {section}{\numberline {5}نتایج آماری و تحلیل مقایسه‌ای روش‌ها}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}تحلیل واریانس و مقایسه روش‌ها}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}عملکرد روش‌ها بر اساس پارامترهای متعادل}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}مقایسه عملکرد کلی روش‌ها}{7}{subsection.5.3}%
+\contentsline {section}{\numberline {6}معادلات بهینه‌سازی پارامتر}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}فرمول‌های حداقل خطا و متعادل}{7}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}برآورد اندازه میدان}{7}{subsection.6.2}%
+\contentsline {section}{\numberline {7}تحلیل تأثیر مدت ثبت و اندازه میدان}{8}{section.7}%
+\contentsline {subsection}{\numberline {7.1}قوانین سرانگشتی اندازه بخش}{8}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}نتایج تحلیل مدت ثبت}{8}{subsection.7.2}%
+\contentsline {section}{\numberline {8}نتایج آماری تفصیلی}{8}{section.8}%
+\contentsline {subsection}{\numberline {8.1}تحلیل خطا بر اساس روش نقشه‌برداری}{8}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}تحلیل زمان محاسبه}{9}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}دقت تشخیص میدان مکانی}{9}{subsection.8.3}%
+\contentsline {section}{\numberline {9}تحلیل نمونه‌برداری و تأثیرات محیطی}{9}{section.9}%
+\contentsline {subsection}{\numberline {9.1}تأثیر نمونه‌برداری نامتعارف}{9}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}تأثیر بیش‌پراکندگی}{10}{subsection.9.2}%
+\contentsline {section}{\numberline {10}مقایسه با پارامترهای گزارش‌شده در ادبیات}{10}{section.10}%
+\contentsline {subsection}{\numberline {10.1}بررسی 100 مقاله منتشرشده}{10}{subsection.10.1}%
+\contentsline {section}{\numberline {11}محدودیت‌ها و پیشنهادات برای تحقیقات آتی}{10}{section.11}%
+\contentsline {subsection}{\numberline {11.1}محدودیت‌های مطالعه فعلی}{10}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}پیشنهادات برای تحقیقات آینده}{10}{subsection.11.2}%
+\contentsline {section}{\numberline {12}کاربردهای عملی و توصیه‌های اجرایی}{10}{section.12}%
+\contentsline {subsection}{\numberline {12.1}راهنمای انتخاب روش}{10}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}معیارهای ارزیابی کیفیت}{11}{subsection.12.2}%
+\contentsline {section}{\numberline {13}نتیجه‌گیری و جمع‌بندی}{11}{section.13}%
+\contentsline {subsection}{\numberline {13.1}یافته‌های اصلی}{12}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}اهمیت استانداردسازی}{12}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}تأثیرات بر تحقیقات آینده}{12}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}چشم‌انداز آینده}{12}{subsection.13.4}%

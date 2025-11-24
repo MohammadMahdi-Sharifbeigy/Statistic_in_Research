@@ -1,0 +1,48 @@
+=== EEG PCA Analysis Report ===
+Generated on: 26-Sep-2025 13:56:50
+
+Dataset Characteristics:
+- Channels: 8 (Fp1, Fp2, F3, F4, C3, C4, P3, P4)
+- Sampling Rate: 250 Hz
+- Duration: 60 seconds
+- Total Samples: 15000
+- Artifacts Added: Eye blinks, Muscle activity, Electrode drift, Power line noise
+
+PCA Results:
+- Total Variance Explained: 100.00%
+- First 4 Components Explain: 69.05%
+- Component-wise explained variance:
+  PC1: 22.72%
+  PC2: 20.14%
+  PC3: 13.77%
+  PC4: 12.42%
+  PC5: 8.97%
+  PC6: 8.63%
+  PC7: 7.14%
+  PC8: 6.21%
+
+Feature Importance Analysis:
+- Most important channels (weighted loading method):
+  1. C4: 0.139 (13.9%)
+  2. C3: 0.138 (13.8%)
+  3. Fp2: 0.131 (13.1%)
+  4. P3: 0.126 (12.6%)
+  5. F4: 0.124 (12.4%)
+- Channels needed for variance thresholds:
+  80% importance: 7 channels (C4, C3, Fp2, P3, F4, Fp1, F3)
+  95% importance: 8 channels (C4, C3, Fp2, P3, F4, Fp1, F3, P4)
+
+Data Categories (2D Projection):
+- NORMAL: 12022 samples (80.1%)
+- EYE_ARTIFACT: 2974 samples (19.8%)
+- MUSCLE_ARTIFACT: 0 samples (0.0%)
+- ELECTRODE_ARTIFACT: 0 samples (0.0%)
+- OTHER: 4 samples (0.0%)
+
+Generated Files:
+- EEG_Original_Data.png/fig
+- EEG_PCA_Analysis.png/fig
+- EEG_Feature_Importance.png/fig
+- EEG_PCA_Projection.png/fig
+- EEG_PCA_Analysis_Results.mat
+- EEG_PCA_Analysis_Report.txt

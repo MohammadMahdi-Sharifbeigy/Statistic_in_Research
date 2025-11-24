@@ -1,0 +1,318 @@
+\documentclass[12pt]{article}
+% Load packages BEFORE xepersian
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+% Listings package with custom setup
+\usepackage{listings}
+% XePersian setup for RTL/LTR support - MUST BE LOADED LAST
+\usepackage{xepersian}
+\settextfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+\setdigitfont[Path="./", Extension=".ttf"]{XB-Niloofar}
+
+% Page setup
+\geometry{
+	top=2.5cm,
+	bottom=2.5cm,
+	left=2.5cm,
+	right=2.5cm
+}
+
+% Colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{sectioncolor}{rgb}{0.2,0.4,0.6}
+\definecolor{examplecolor}{rgb}{0.8,0.9,1.0}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\lr{Electrophysiology Statistical Analysis}}
+\fancyhead[L]{تحلیل آماری الکتروفیزیولوژی}
+\fancyfoot[C]{\thepage}
+
+% Section styling
+\titleformat{\section}
+{\color{sectioncolor}\Large\bfseries}
+{\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{sectioncolor}\large\bfseries}
+{\thesubsection}{1em}{}
+
+% Hyperlink setup
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdfpagemode=FullScreen,
+	unicode=true,
+	pdfencoding=auto
+}
+
+\title{
+		\begin{center}
+			{\Huge \bfseries گزارشی در حوزه الکتروفیزیولوژی شناختی: نقش قشر پیش‌پیشانی دورسولترال راست در اکتشاف تصادفی } \\
+			\vspace{1cm}
+			{\large بر اساس مقاله: 
+				\href{https://www.nature.com/articles/s41598-024-76025-5}{Toghi, Chizari, Khosrowabadi (2024)}}
+		\end{center}
+	}
+
+\author{\href{https://github.com/MohammadMahdi-Sharifbeigy}{محمدمهدی شریف بیگی} \\ 
+	\lr{MohammadMahdi Sharifbeigy}}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{مقدمه}
+	
+	یکی از پرسش‌های بنیادی در علوم اعصاب شناختی این است که مغز انسان چگونه میان گزینه‌های آشنا با پاداش مشخص و گزینه‌های جدید با پاداش نامعلوم تصمیم می‌گیرد. این وضعیت که «تجارت میان اکتشاف و بهره‌برداری» نام دارد، هم در زندگی روزمره (مثلاً انتخاب غذای جدید در مقابل غذای همیشگی) و هم در پژوهش‌های تصمیم‌گیری اهمیتی اساسی دارد. پژوهش‌های اخیر نشان داده‌اند که دو نوع اصلی اکتشاف در مغز وجود دارد: \textbf{اکتشاف هدایت‌شده} که مبتنی بر جمع‌آوری اطلاعات است، و \textbf{اکتشاف تصادفی} که ناشی از تغییرپذیری رفتاری و نویز در سیستم عصبی است.
+	
+	مطالعه حاضر با بهره‌گیری از \lr{continuous theta burst stimulation (cTBS)} روی قشر پیش‌پیشانی دورسولترال راست (rDLPFC) تلاش کرده است نقش علّی این ناحیه را در اکتشاف تصادفی روشن کند.
+	
+	\section{مروری بر پیشینه}
+	
+	مطالعات تصویربرداری عصبی نشان داده‌اند که rFPC و dACC بیشتر با اکتشاف هدایت‌شده مرتبط هستند، در حالی که rDLPFC بیشتر در اکتشاف تصادفی فعال است. با این حال، پیش از این پژوهش، شواهد علّی مستقیم درباره نقش rDLPFC در اکتشاف تصادفی وجود نداشت. همین شکاف دانشی، زمینه‌ساز انجام این آزمایش شد.
+	
+	\section{روش پژوهش}
+	
+	در این مطالعه ۲۵ فرد سالم راست‌دست (۱۱ زن، میانگین سنی: ۲۳/۸۴ سال) شرکت کردند. برای مهار فعالیت قشر rDLPFC از پروتکل \lr{cTBS} استفاده شد. در این پروتکل، طی ۴۰ ثانیه ۶۰۰ پالس با فرکانس تتا به مغز اعمال شد. برای مقایسه، یک جلسه کنترل نیز در محل Vertex اجرا گردید.
+	
+	وظیفه شناختی مورد استفاده، \lr{Horizon Task} بود. این تکلیف شامل بازی‌های متوالی با «ماشین‌های اسلات» بود که پاداش آن‌ها از توزیع‌های گاوسی با میانگین‌های متفاوت استخراج می‌شد. بدین ترتیب داده‌های پژوهش \textbf{از توزیع آماری گاوسی} تولید شدند. آزمودنی‌ها در ابتدا چند بار به صورت اجباری از هر ماشین استفاده می‌کردند (شرط [1 3] یا [2 2]) و سپس در بخش انتخاب آزاد باید تصمیم می‌گرفتند.
+	
+	\textbf{توضیح شرایط:}
+	\begin{itemize}
+		\item \textbf{افق تصمیم‌گیری (Horizon):} در حالت کوتاه (\lr{h1}) فرد بعد از مرحله اجباری فقط یک انتخاب آزاد دارد. بنابراین انگیزه‌ای برای جمع‌آوری اطلاعات جدید وجود ندارد. در حالت بلند (\lr{h6}) فرد شش انتخاب آزاد دارد و اطلاعاتی که به‌دست می‌آورد در انتخاب‌های بعدی هم مفید است. این تفاوت باعث می‌شود \lr{h6} بیشتر با اکتشاف مرتبط باشد.
+		\item \textbf{نوع تحریک (\lr{Stimulation site}):} تحریک rDLPFC برای بررسی نقش قشر پیش‌پیشانی دورسولترال راست انجام شد. تحریک Vertex نیز به عنوان شرط کنترل استفاده شد تا اثرات عمومی تحریک مغناطیسی از اثرات اختصاصی rDLPFC جدا شود.
+		\item \textbf{شرایط اطلاعات (\lr{Information condition}):} دو حالت اصلی وجود داشت: مساوی [2 2] و نامساوی [1 3]. در حالت مساوی اطلاعات برابر است و اگر فرد گزینه کم‌پاداش‌تر را انتخاب کند، نشانه اکتشاف تصادفی است. در حالت نامساوی، یک گزینه اطلاعات کمتری دارد و انتخاب آن به معنی اکتشاف هدایت‌شده است.
+	\end{itemize}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{page2_img1.png}
+		\caption{ وظیفه Horizon و نحوه ارائه شرایط اطلاعات نامساوی (۱-۳) و مساوی (۲-۲).}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{page2_img2.png}
+		\caption{ پروتکل تحریک مغناطیسی cTBS و محل قرارگیری کویل روی rDLPFC و Vertex.}
+	\end{figure}
+	
+	\section{متغیرهای پژوهش}
+	
+	\subsection{متغیر مستقل}
+	\begin{itemize}
+		\item نوع تحریک: rDLPFC در مقابل Vertex (اسمی).
+		\item افق تصمیم‌گیری: کوتاه (\lr{h1}) یا بلند (\lr{h6}) (اسمی). در حالت h1 انگیزه کمی برای اکتشاف وجود دارد، در حالی که \lr{h}6 شرایطی فراهم می‌کند که اکتشاف سودمند باشد.
+		\item شرایط اطلاعات: مساوی [2 2] یا نامساوی [1 3] (اسمی). این شرایط بیانگر میزان اطلاعات اولیه درباره هر دستگاه هستند و کلید اصلی در تمایز میان اکتشاف هدایت‌شده و تصادفی به شمار می‌روند.
+	\end{itemize}
+	
+	\subsection{متغیر وابسته}
+	\begin{itemize}
+		\item احتمال انتخاب گزینه‌ی با اطلاعات بیشتر = شاخص اکتشاف هدایت‌شده (کمی نسبی).
+		\item احتمال انتخاب گزینه‌ی با میانگین پاداش کمتر = شاخص اکتشاف تصادفی (کمی نسبی).
+		\item نویز تصمیم‌گیری (\lr{Decision Noise}) از مدل انتخاب لجستیک (کمی پیوسته).
+		\item ضریب پاداش اطلاعاتی (\lr{Information Bonus}) (کمی پیوسته).
+		\item سوگیری فضایی (\lr{Spatial Bias}) (کمی پیوسته).
+	\end{itemize}
+	
+
+	\begin{table}[h!]
+		\centering
+		\caption{\textbf{شرح پارامترهای مدل (\lr{Table 1}).}
+			این جدول پارامترهای آزادِ مدل انتخاب لجستیک را توصیف می‌کند.
+			\emph{Information Bonus} معرف گرایش به کسب اطلاعات (\lr{directed exploration})،
+			\emph{Decision Noise} معرف کاوش تصادفی (\lr{random exploration})،
+			و \emph{Spatial Bias} ترجیح مکانی انتخاب‌ها را نشان می‌دهد.}
+		\label{tab:parameters}
+		\begin{tabular}{@{}p{3.2cm} p{10.5cm}@{}}
+			\toprule
+			\textbf{پارامتر} & \textbf{شرح} \\
+			\midrule
+			Information Bonus ($\alpha$) &
+			گرایش فرد به انتخاب گزینه‌هایی که اطلاعات بیشتری می‌دهند (معیار directed exploration).
+			این پارامتر وابسته به horizon است و شامل دو مقدار جداگانه
+			(\textit{Info h1} و \textit{Info h6}) می‌شود. \\[0.2cm]
+			
+			Decision Noise ($\sigma_d$) &
+			معیار رفتاریِ تصادفی بودن انتخاب‌ها (random exploration). این پارامتر حساسیت تصمیم‌گیری
+			به اختلاف میانگین پاداش‌ها را کاهش می‌دهد. در مدلِ ما برای شرایط مختلف horizon و uncertainty
+			چهار پارامتر جداگانه وجود دارد. \\[0.2cm]
+			
+			Spatial Bias (B) &
+			ترجیح انتخاب براساس مکان (مثلاً سمت چپ یا راست) به‌صورت وابسته به تاریخچهٔ نمایش،
+			که می‌تواند تصمیم‌گیری را بدون توجه به ارزش واقعی گزینه‌ها جهت دهد.
+			\\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	% ---- END Table 1 ----
+	
+	\section{روش‌های آماری}
+	
+	برای تحلیل داده‌ها از ترکیبی از روش‌های \lr{model-free} و \lr{model-based} استفاده شد. 
+	ابتدا داده‌های رفتاری (انتخاب‌ها) با استفاده از آنالیز واریانس با اندازه‌گیری‌های مکرر (\lr{Repeated Measures ANOVA}) بررسی شدند. 
+	از آن‌جایی که داده‌های انتخابی از توزیع گاوسی تولید شده بودند، فرض نرمال بودن داده‌ها برای آزمون‌های پارامتری برقرار است.
+	
+	\subsection{آنالیز مدل‌آزاد (Model-free)}
+	در تحلیل مدل‌آزاد، دو شاخص اصلی محاسبه شد:
+	\begin{itemize}
+		\item احتمال انتخاب گزینه پُراطلاعات‌تر در شرایط [1 3]: شاخص \textbf{اکتشاف هدایت‌شده}.
+		\item احتمال انتخاب گزینه با میانگین پاداش کمتر در شرایط [2 2]: شاخص \textbf{اکتشاف تصادفی}.
+	\end{itemize}
+	
+	برای مقایسه شرایط تحریک و افق تصمیم‌گیری از آنالیز واریانس استفاده شد:
+	\[
+	F = \frac{MS_{\text{بین شرایط}}}{MS_{\text{خطا}}}
+	\]
+	که در آن $MS$ میانگین مربعات است. اثرات اصلی و تعامل‌ها با سطح معناداری $\alpha=0.05$ ارزیابی شدند. 
+	
+	برای آزمون‌های دنباله‌دار از آزمون t زوجی استفاده شد:
+	\[
+	t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{s_1^2}{n} + \frac{s_2^2}{n}}}
+	\]
+	
+	\subsection{آنالیز مدل‌محور (Model-based)}
+	انتخاب‌های شرکت‌کنندگان با یک مدل انتخاب لجستیک برازش داده شد. تابع ارزش هر گزینه به شکل زیر تعریف شد:
+	\[
+	Q_a = R_a + \alpha I_a + B s_a
+	\]
+	که در آن:
+	\begin{itemize}
+		\item $R_a$ = پاداش مورد انتظار گزینه $a$،
+		\item $I_a$ = ارزش اطلاعاتی گزینه $a$،
+		\item $s_a$ = موقعیت مکانی گزینه $a$،
+		\item $\alpha$ = ضریب اطلاعاتی (\lr{Information Bonus})،
+		\item $B$ = سوگیری فضایی (\lr{Spatial Bias}).
+	\end{itemize}
+	
+	احتمال انتخاب گزینه $a$ به جای $b$ با تابع لجستیک زیر محاسبه شد:
+	\[
+	P(a) = \frac{1}{1 + \exp \left( \frac{Q_b - Q_a}{\sigma_d} \right)}
+	\]
+	که در آن $\sigma_d$ پارامتر نویز تصمیم‌گیری (\lr{Decision Noise}) است. 
+	
+	پارامترها با روش بیشینهٔ پسین (\lr{MAP Estimation}) برازش داده شدند. 
+	برای مقایسه پارامترها بین شرایط تحریک، از آزمون t زوجی و مقادیر $p$ گزارش‌شده استفاده شد.
+		
+	\section{یافته‌ها}
+	
+	نتایج مدل آزاد نشان داد که مهار rDLPFC اکتشاف تصادفی را به طور معناداری کاهش می‌دهد، اما اثری بر اکتشاف هدایت‌شده ندارد. این یعنی شرکت‌کنندگان پس از تحریک کمتر تمایل داشتند گزینه‌های کم‌پاداش‌تر را انتخاب کنند.
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{page4_img1.png}
+		\caption{
+			\textbf{ تحلیل مدل‌محور آزاد نشان می‌دهد که مهار rDLPFC، directed exploration را تغییر نداد اما \lr{random exploration} به طور معناداری کاهش یافت. تفاوت‌ها در \lr{p(low mean)} برای h1 و h6 به‌ترتیب $p=0.003$ (\lr{d=0.69}) و $p=0.04$ (\lr{d=0.44}) بودند؛ بنابراین اثر روی اکتشاف تصادفی قوی‌تر و مداوم‌تر است. این الگو نشان می‌دهد که rDLPFC نقش ویژه‌ای در تولید تغییرپذیری رفتاری (\lr{random exploration}) دارد، در حالی که گرایش به کسب اطلاعات (\lr{directed exploration}) توسط نواحی دیگری مدیریت می‌شود.
+		}}
+	\end{figure}
+	
+	\vspace{0.3cm}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{page5_img1.png}
+		\caption{\textbf{تحلیل بلوکی نشان می‌دهد کاهشِ random exploration پس از مهار rDLPFC در بلوک دوم (و مجموع بلوک‌های اول و دوم) ظاهر می‌شود، اما در بلوک اول دیده نمی‌شد. این الگو می‌تواند به دو دلیل باشد: (1) اثر دینامیک cTBS بر جمعیت‌های عصبی که ممکن است دیرتر آشکار شود، و (2) یادگیری/کاهش نویز رفتاری با پیشرفت بازی که تعامل با تاثیر تحریک را تغییر می‌دهد.}}
+	\end{figure}
+	
+	\vspace{0.3cm}
+	
+	
+		تحلیل مدل‌محور نشان داد که تنها پارامتر «نویز تصمیم‌گیری» در شرایط عدم قطعیت کامل ([2 2]) کاهش یافت، در حالی که ضریب اطلاعات و سوگیری فضایی بدون تغییر باقی ماندند. این امر بیانگر افزایش حساسیت به پاداش متوسط و کاهش رفتارهای تصادفی است.
+	
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{page6_img1.png}
+		\caption{
+			\textbf{Model-free analysis of first free-choice trials.}
+			(A) تحریک rDLPFC با پروتکل cTBS تغییری در \emph{directed exploration}
+			در هیچ‌یک از شرایط horizon ایجاد نکرد.
+			(B) در مقابل، \emph{random exploration} به طور معناداری پس از تحریک rDLPFC
+			کاهش یافت (در مقایسه با شرط کنترل vertex).
+			در هر دو حالت، میزان exploration با افزایش horizon بیشتر شد.
+			(* نشان‌دهنده $p < 0.05$ و ** نشان‌دهنده $p < 0.005$؛ خطاها
+			نمایانگر انحراف معیار میانگین هستند.)
+		}
+		\label{fig:model_free}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{page6_img2.png}
+		\caption{\textbf{براساس مدلِ لجستیکِ برازش‌شده، تنها پارامترهایی که به‌صورت معنادار تغییر کردند، مؤلفه‌های decision noise در شرطِ [2 2] برای h1 و h6 بودند \lr{(h1: $p=0.04$؛ h6: $p=0.02$)}. سایر پارامترها از جمله Information Bonus و Spatial Bias تغییر معنادار نشان ندادند. کاهش در decision noise معادل افزایش حساسیت شرکت‌کنندگان به اختلاف میانگین پاداش‌هاست — یعنی مهار rDLPFC موجب شد انتخاب‌ها کمتر تصادفی و بیشتر مبتنی بر پاداش باشند.}}
+	\end{figure}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{page7_img1.png}
+		\caption{\textbf{ پارامتر Information Bonus در هر دو horizon \lr{(h1,h6)} تفاوت معناداری بین شرایط تحریک نشان نداد \lr{(h1: $p=0.95$؛ h6: $p=0.85$)}. این نتیجه با مشاهدات مدل‌آزاد مطابقت دارد که directed exploration دست‌نخورده باقی می‌ماند و نشان می‌دهد سازوکارهای اطلاعات‌محور احتمالأ در مناطق دیگری مانند rFPC یا dACC میزبانی می‌شوند.
+		}}
+	\end{figure}
+	\vspace{0.3cm}
+
+	\begin{table}[h!]
+		\centering
+		\caption{\textbf{پارامترهای مدل‌آزاد و مدل‌محور در دو شرایط تحریک.}
+			مقادیر میانگین (انحراف معیار) برای هر پارامتر در شرایط \emph{vertex} و \emph{rDLPFC}، و آزمون‌های آماری همراه با اندازهٔ اثر (\lr{Cohen's d}).}
+		\label{tab:results}
+		\begin{tabular}{@{}l c c c c@{}}
+			\toprule
+			\textbf{پارامتر} & \textbf{vertex (M (SD))} & \textbf{rDLPFC (M (SD))} & \textbf{p-value} & \textbf{Cohen's d} \\
+			\midrule
+			\multicolumn{5}{@{}l}{\textit{Model-free parameters}} \\
+			\midrule
+			p(high info) h1 & 0.44 (0.10) & 0.43 (0.13) & 0.78 & 0.05 \\
+			p(high info) h6 & 0.57 (0.15) & 0.55 (0.17) & 0.45 & 0.15 \\
+			p(low mean) h1 & 0.19 (0.11) & 0.14 (0.07) & 0.003** & 0.69 \\
+			p(low mean) h6 & 0.27 (0.14) & 0.24 (0.11) & 0.04* & 0.44 \\
+			\midrule
+			\multicolumn{5}{@{}l}{\textit{Model-based parameters}} \\
+			\midrule
+			Information bonus h1 & -3.32 (7.36) & -3.10 (10.62) & 0.95 & -0.01 \\
+			Information bonus h6 & 8.70 (12.77) & 8.30 (14.81) & 0.85 & 0.03 \\
+			Decision noise [2 2] h1 & 5.88 (5.45) & 4.05 (2.74) & 0.04* & 0.44 \\
+			Decision noise [1 3] h1 & 8.05 (6.45) & 6.00 (4.20) & 0.12 & 0.33 \\
+			Decision noise [2 2] h6 & 12.87 (9.47) & 10.25 (6.00) & 0.02* & 0.50 \\
+			Decision noise [1 3] h6 & 11.55 (6.85) & 11.44 (6.87) & 0.93 & 0.01 \\
+			Spatial bias [2 2] h1 & 2.44 (6.24) & 2.20 (2.56) & 0.83 & 0.04 \\
+			Spatial bias [1 3] h1 & 2.79 (5.66) & 1.54 (5.65) & 0.56 & 0.12 \\
+			Spatial bias [2 2] h6 & 7.29 (8.95) & 4.16 (7.40) & 0.07 & 0.39 \\
+			Spatial bias [1 3] h6 & -4.56 (13.24) & -2.61 (10.18) & 0.42 & -0.17 \\
+			\bottomrule
+		\end{tabular}
+		\begin{flushleft}
+			\footnotesize{علامت * و ** به ترتیب نشان‌دهندهٔ $p<0.05$ و $p<0.01$ هستند.}
+		\end{flushleft}
+	\end{table}
+
+	\section{بحث}
+	
+	یافته‌ها نشان می‌دهند که rDLPFC به طور مستقیم مسئول ایجاد تغییرپذیری رفتاری در تصمیم‌گیری است. کاهش اکتشاف تصادفی پس از مهار این ناحیه بیانگر آن است که مغز در غیاب فعالیت کامل rDLPFC بیشتر به سمت بهره‌برداری از گزینه‌های پاداش‌دهنده سوق پیدا می‌کند.
+	
+	این نتایج هم‌راستا با پژوهش‌های fMRI هستند که rDLPFC را به نویز رفتاری و اکتشاف غیرهدفمند مرتبط دانسته‌اند. در مقابل، اکتشاف هدایت‌شده به نواحی دیگر مانند rFPC و dACC وابسته است. این جداسازی کارکردی نشان می‌دهد که مغز مسیرهای متفاوتی برای دو نوع اکتشاف دارد.
+	
+	از منظر بالینی، این یافته‌ها می‌توانند در درک اختلالاتی مانند اسکیزوفرنی و افسردگی مفید باشند؛ چرا که در این بیماران غالباً افزایش اکتشاف تصادفی یا کاهش تعادل میان اکتشاف و بهره‌برداری مشاهده می‌شود.
+	
+	\section{جمع‌بندی}
+	
+	این پژوهش نخستین شواهد علّی از نقش قشر پیش‌پیشانی دورسولترال راست در اکتشاف تصادفی ارائه کرد. داده‌ها که از توزیع‌های گاوسی تولید شده بودند نشان دادند که مهار این ناحیه موجب کاهش نویز تصمیم‌گیری و انتخاب‌های تصادفی می‌شود، در حالی که انتخاب‌های مبتنی بر اطلاعات دست‌نخورده باقی می‌مانند. شرایط اطلاعات مساوی [2 2] و نامساوی [1 3] به همراه افق‌های کوتاه (\lr{h1}) و بلند (\lr{h6}) و همچنین شرایط تحریک rDLPFC و Vertex ابزار اصلی طراحی بودند که امکان تمایز دقیق میان انواع اکتشاف را فراهم کردند.
+	
+	این نتیجه، درک ما را از مکانیسم‌های عصبی تصمیم‌گیری و تعادل میان اکتشاف و بهره‌برداری گسترش می‌دهد و می‌تواند الهام‌بخش مداخلات بالینی آینده باشد.
+	
+\end{document}
